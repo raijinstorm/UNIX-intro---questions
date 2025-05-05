@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background: url('https://external-preview.redd.it/iw7EGzifpGVEQlvEL20RLEst1MMwJrZ8IK8M39oB6II.jpg?auto=webp&s=fc9233a24adcdf16560453ef5e5176454bbda79e') no-repeat center center fixed;
+      background-size: cover;
+      color: #0f0;
+    }
+    .quiz {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+      max-width: 600px;
+      margin: 100px auto;
+    }
+.question {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  text-shadow: 0 0 2px #8f8;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  color: #bfb;
+}
+
+.choices button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #5a5;
+  background: rgba(0, 0, 0, 0.5);
+  color: #cfc;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s, border-color 0.3s;
+  text-shadow: 0 0 1px #7f7;
+  border-radius: 5px;
+}
+
+
+.choices button.correct {
+  background: rgba(120, 180, 120, 0.4);
+  border-color: #6c6;
+  color: #cfc;
+}
+
+.choices button.wrong {
+  background: rgba(180, 80, 80, 0.4);
+  border-color: #c88;
+  color: #fcc;
+}
+  </style>
+</head>
+<body>
+  <div class="quiz">
+    <!-- Q1 -->
+<div class="question" id="q1">What is not a difference between BIOS and UEFI?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">UEFI can boot from drives of 1 TB</button>
+  <button data-correct="false">UEFI supports Secure Boot</button>
+  <button data-correct="false">UEFI is newer</button>
+  <button data-correct="false">In UEFI one can use a mouse</button>
+</div>
+
+<!-- Q2 -->
+<div class="question" id="q2">What is a “splash screen”?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The started daemon confirmed by OK messages</button>
+  <button data-correct="true">Software that displays animations instead of boot-up messages</button>
+  <button data-correct="false">The started daemon instead of boot-up messages</button>
+  <button data-correct="false">Software that displays OK messages</button>
+</div>
+
+<!-- Q3 -->
+<div class="question" id="q3">Which license ensures that software and derivatives remain open source?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Apache</button>
+  <button data-correct="true">GNU GPL</button>
+  <button data-correct="false">BSD</button>
+  <button data-correct="false">MIT</button>
+</div>
+
+<!-- Q4 -->
+<div class="question" id="q4">Which statement is not true?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Linux is a UNIX system</button>
+  <button data-correct="false">POSIX and SUS are nowadays the same standards</button>
+  <button data-correct="false">“UNIX” is a SUS-compliant system</button>
+  <button data-correct="false">SUS was developed as a cheaper alternative to POSIX</button>
+</div>
+
+<!-- Q5 -->
+<div class="question" id="q5">Which symbol allows you to execute the second command only when the first succeeds?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">&&</button>
+  <button data-correct="false">||</button>
+  <button data-correct="false">|</button>
+  <button data-correct="false">;</button>
+</div>
+
+<!-- Q6 -->
+<div class="question" id="q6">Which of these does not guarantee entering your home directory?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">cd</button>
+  <button data-correct="false">cd $HOME</button>
+  <button data-correct="false">cd ~</button>
+  <button data-correct="true">cd ..</button>
+</div>
+
+<!-- Q7 -->
+<div class="question" id="q7">How can’t you list (almost) all files in /etc in long-listing format?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">ls -l --almost-all /etc</button>
+  <button data-correct="false">ls -lA -l /etc</button>
+  <button data-correct="false">ls -lA /etc</button>
+  <button data-correct="false">ls --almost-all -l /etc</button>
+</div>
+
+<!-- Q8 -->
+<div class="question" id="q8">How can you create a .tar.gz archive?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">gzip file</button>
+  <button data-correct="true">tar -cvzf archive.tar.gz files…</button>
+  <button data-correct="false">gunzip file.tar.gz</button>
+  <button data-correct="false">tar -xvzf archive.tar.gz</button>
+</div>
+
+<!-- Q9 -->
+<div class="question" id="q9">How can you uncompress a .tar.gz archive?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">gunzip file.tar.gz</button>
+  <button data-correct="true">tar -xvzf archive.tar.gz</button>
+  <button data-correct="false">tar -cvzf archive.tar.gz</button>
+  <button data-correct="false">gzip -d file.tar.gz</button>
+</div>
+
+<!-- Q10 -->
+<div class="question" id="q10">How can you get a command’s usage information?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">use cmd</button>
+  <button data-correct="true">man cmd</button>
+  <button data-correct="false">usage cmd</button>
+  <button data-correct="false">manual cmd</button>
+</div>
+
+<!-- Q11 -->
+<div class="question" id="q11">How can you display the first 3 lines of a file?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">first file</button>
+  <button data-correct="false">head file</button>
+  <button data-correct="true">head -n 3 file</button>
+  <button data-correct="false">first -n 3 file</button>
+</div>
+
+<!-- Q12 -->
+<div class="question" id="q12">Which regex symbol repeats the preceding atom 1 or more times?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">?</button>
+  <button data-correct="true">+</button>
+  <button data-correct="false">*</button>
+  <button data-correct="false">.</button>
+</div>
+
+<!-- Q13 -->
+<div class="question" id="q13">Which regex symbol matches the beginning of the string?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">?</button>
+  <button data-correct="false">$</button>
+  <button data-correct="true">^</button>
+  <button data-correct="false">*</button>
+</div>
+
+<!-- Q14 -->
+<div class="question" id="q14">Which tool generates random passwords?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">random</button>
+  <button data-correct="true">pwgen</button>
+  <button data-correct="false">passwd</button>
+  <button data-correct="false">randgen</button>
+</div>
+
+<!-- Q15 -->
+<div class="question" id="q15">Where is user account information stored?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/accounts</button>
+  <button data-correct="false">/etc/userdatabase</button>
+  <button data-correct="true">/etc/passwd</button>
+  <button data-correct="false">/etc/user</button>
+</div>
+
+<!-- Q16 -->
+<div class="question" id="q16">Which of the following is not a file type?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">daemon</button>
+  <button data-correct="false">directory</button>
+  <button data-correct="false">symbolic link</button>
+  <button data-correct="false">regular file</button>
+</div>
+
+<!-- Q17 -->
+<div class="question" id="q17">How can you repair a Linux file system?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">fsrp</button>
+  <button data-correct="true">fsck</button>
+  <button data-correct="false">mkfs</button>
+  <button data-correct="false">rfs</button>
+</div>
+
+<!-- Q18 -->
+<div class="question" id="q18">What is a process without a parent called?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">orphan</button>
+  <button data-correct="false">zombie</button>
+  <button data-correct="false">sad</button>
+  <button data-correct="false">parentless</button>
+</div>
+
+<!-- Q19 -->
+<div class="question" id="q19">Which shortcut does not send a signal to the foreground process?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Ctrl + D</button>
+  <button data-correct="false">Ctrl + Z</button>
+  <button data-correct="false">Ctrl + \</button>
+  <button data-correct="false">Ctrl + C</button>
+</div>
+
+<!-- Q20 -->
+<div class="question" id="q20">Which Git command downloads a remote repository?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">git copy</button>
+  <button data-correct="false">git download</button>
+  <button data-correct="true">git clone</button>
+  <button data-correct="false">git init</button>
+</div>
+
+<h1> 01 - Unix  </h1>
+
+  <!-- Q11 -->
+  <div class="question" id="q11">Which command displays the current working directory?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">pwd</button>
+    <button data-correct="false">cwd</button>
+    <button data-correct="false">whereami</button>
+    <button data-correct="false">locate .</button>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question" id="q12">What component of Unix is responsible for managing hardware and resources?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">Kernel</button>
+    <button data-correct="false">Shell</button>
+    <button data-correct="false">Daemon</button>
+    <button data-correct="false">Filesystem</button>
+  </div>
+
+  <!-- Q13 -->
+  <div class="question" id="q13">Which file descriptor number corresponds to standard error (stderr)?</div>
+<div class="choices" id="choices">
+    <button data-correct="false">0</button>
+    <button data-correct="true">2</button>
+    <button data-correct="false">1</button>
+    <button data-correct="false">3</button>
+  </div>
+
+  <!-- Q14 -->
+  <div class="question" id="q14">Which symbol redirects a command’s standard output to a file, overwriting it?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">></button>
+    <button data-correct="false">>>&nbsp;</button>
+    <button data-correct="false"><</button>
+    <button data-correct="false">|</button>
+  </div>
+
+  <!-- Q15 -->
+  <div class="question" id="q15">What does the pipe symbol (`|`) do in a Unix command line?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">Passes stdout of the first command as stdin to the second</button>
+    <button data-correct="false">Backgrounds the process</button>
+    <button data-correct="false">Redirects stderr to stdout</button>
+    <button data-correct="false">Terminates the command sequence</button>
+  </div>
+
+  <!-- Q16 -->
+  <div class="question" id="q16">Which permission bit allows a file to be executed?</div>
+<div class="choices" id="choices">
+    <button data-correct="false">r</button>
+    <button data-correct="false">w</button>
+    <button data-correct="true">x</button>
+    <button data-correct="false">s</button>
+  </div>
+
+  <!-- Q17 -->
+  <div class="question" id="q17">Which command lists running processes in the current terminal session?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">ps</button>
+    <button data-correct="false">proc</button>
+    <button data-correct="false">jobs</button>
+    <button data-correct="false">tasks</button>
+  </div>
+
+  <!-- Q18 -->
+  <div class="question" id="q18">Which environment variable specifies the directories searched for executables?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">PATH</button>
+    <button data-correct="false">HOME</button>
+    <button data-correct="false">SHELL</button>
+    <button data-correct="false">PWD</button>
+  </div>
+
+  <!-- Q19 -->
+  <div class="question" id="q19">What does the `umask` command control?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">Default file-creation permissions</button>
+    <button data-correct="false">User’s shell mask</button>
+    <button data-correct="false">Process memory limits</button>
+    <button data-correct="false">Masking of console output</button>
+  </div>
+
+  <!-- Q20 -->
+  <div class="question" id="q20">Which directory typically contains user home directories on a Unix system?</div>
+<div class="choices" id="choices">
+    <button data-correct="true">/home</button>
+    <button data-correct="false">/usr</button>
+    <button data-correct="false">/opt</button>
+    <button data-correct="false">/var</button>
+  </div>
+
+<h1> 02 - Bash  </h1>
+  <!-- Q21 -->
+  <div class="question" id="q21">How do you correctly assign the value 42 to variable X in Bash?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">X=42</button>
+    <button data-correct="false">X =42</button>
+    <button data-correct="false">X = 42</button>
+    <button data-correct="false">let X = 42</button>
+  </div>
+
+  <!-- Q22 -->
+  <div class="question" id="q22">Which syntax correctly expands the variable NAME in a string?</div>
+  <div class="choices" id="choices">
+    <button data-correct="false">%NAME%</button>
+    <button data-correct="true">${NAME}</button>
+    <button data-correct="false">$(NAME)</button>
+    <button data-correct="false">£{NAME}</button>
+  </div>
+
+  <!-- Q23 -->
+  <div class="question" id="q23">What is the effect of enclosing text in double quotes in Bash?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">Prevents word splitting but still allows variable and command expansion</button>
+    <button data-correct="false">Prevents both word splitting and any expansion</button>
+    <button data-correct="false">Performs pathname expansion only</button>
+    <button data-correct="false">Acts the same as single quotes</button>
+  </div>
+
+  <!-- Q24 -->
+  <div class="question" id="q24">Which exit status indicates a successful command execution?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">0</button>
+    <button data-correct="false">1</button>
+    <button data-correct="false">127</button>
+    <button data-correct="false">255</button>
+  </div>
+
+  <!-- Q25 -->
+  <div class="question" id="q25">How do you define a function named greet in Bash?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">greet() { echo "Hello"; }</button>
+    <button data-correct="false">function: greet() echo "Hello"</button>
+    <button data-correct="false">def greet { echo "Hello" }</button>
+    <button data-correct="false">greet => { echo "Hello" }</button>
+  </div>
+
+  <!-- Q26 -->
+  <div class="question" id="q26">Which construct iterates over a list of items in Bash?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">for item in a b c; do …; done</button>
+    <button data-correct="false">foreach item in (a b c) { … }</button>
+    <button data-correct="false">loop item of a, b, c { … }</button>
+    <button data-correct="false">while item in a b c; do …; done</button>
+  </div>
+
+  <!-- Q27 -->
+  <div class="question" id="q27">How do you redirect standard error (stderr) to the same place as standard output?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">2>&1</button>
+    <button data-correct="false">&>2</button>
+    <button data-correct="false">1>&2</button>
+    <button data-correct="false">2>1</button>
+  </div>
+
+  <!-- Q28 -->
+  <div class="question" id="q28">Which operator appends command output to a file instead of overwriting it?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">>></button>
+    <button data-correct="false">></button>
+    <button data-correct="false"><</button>
+    <button data-correct="false">|></button>
+  </div>
+
+  <!-- Q29 -->
+  <div class="question" id="q29">Which syntax captures the output of ls into a variable LIST?</div>
+  <div class="choices" id="choices">
+    <button data-correct="false">LIST=`ls`</button>
+    <button data-correct="true">LIST=$(ls)</button>
+    <button data-correct="false">LIST<<ls>></button>
+    <button data-correct="false">LIST=[ls]</button>
+  </div>
+
+  <!-- Q30 -->
+  <div class="question" id="q30">How do you print "Done" without a trailing newline?</div>
+  <div class="choices" id="choices">
+    <button data-correct="true">echo -n "Done"</button>
+    <button data-correct="false">printf "Done\n"</button>
+    <button data-correct="false">echo "Done" \\c</button>
+    <button data-correct="false">echo -e "Done"</button>
+  </div>
+
+
+
+<!-- Q21 -->
+<div class="question" id="q21">Name 2 desktop environments.</div>
+
+<!-- Q22 -->
+<div class="question" id="q22">In semantic versioning (X.Y.Z), what are X, Y and Z called?</div>
+
+<!-- Q23 -->
+<div class="question" id="q23">Name 3 important Linux distributions and why they’re important.</div>
+
+<!-- Q24 -->
+<div class="question" id="q24">What is the default general command syntax?</div>
+
+<!-- Q25 -->
+<div class="question" id="q25">How can you append the current date to a file?</div>
+
+<!-- Q26 -->
+<div class="question" id="q26">How can you check a file’s owner, group and permissions?</div>
+
+  </div>
+
+  <script>
+  const choices = document.querySelectorAll('#choices button');
+  choices.forEach(button => {
+    button.addEventListener('click', () => {
+      // If already marked correct, do nothing
+      if (button.classList.contains('correct')) return;
+
+      // Remove previous wrong markings
+      choices.forEach(btn => btn.classList.remove('wrong'));
+
+      if (button.dataset.correct === 'true') {
+        button.classList.add('correct'); // Keep green permanently
+      } else {
+        button.classList.add('wrong'); // Flash red
+        setTimeout(() => {
+          button.classList.remove('wrong');
+        }, 1000);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
