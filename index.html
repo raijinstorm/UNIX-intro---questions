@@ -57,10 +57,78 @@
   border-color: #c88;
   color: #fcc;
 }
+
+#toc {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+#toc h2 {
+  color: #bfb;
+  font-weight: bold;
+  text-shadow: 0 0 3px #0f0;
+  border-bottom: 1px solid #4f4;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#toc ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#toc li {
+  margin: 6px 0;
+}
+
+#toc a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 0 2px #0f0;
+  transition: color 0.3s;
+}
+
+#toc a:hover {
+  color: #9f9;
+  text-decoration: underline;
+}
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #cfc;
+  border: 1px solid #6f6;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  text-shadow: 0 0 2px #0f0;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#scrollTopBtn:hover {
+  background-color: rgba(0, 255, 0, 0.4);
+  transform: scale(1.1);
+}
+
+
+
   </style>
 </head>
 <body>
   <div class="quiz">
+    <div id="toc">
+    <h2>Table of Contents (with links) </h2>
+    <ul id="toc-list"></ul>
+  </div>
+
     <h1> Top 20 questions  </h1>
     <!-- Q1 -->
 <div class="question" id="q1">What is not a difference between BIOS and UEFI?</div>
@@ -242,188 +310,1644 @@
   <button data-correct="false">git init</button>
 </div>
 
+<h1> Sample test  </h1>
+<div class="question" id="q1">Unix is any OS that is fully compliant with:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">GPL</button>
+  <button data-correct="false">BSD</button>
+  <button data-correct="true">SUS</button>
+  <button data-correct="false">AIX</button>
+</div>
+
+<div class="question" id="q2">Which boot manager is a part of the GNU project?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">GIMP</button>
+  <button data-correct="true">GRUB</button>
+  <button data-correct="false">GREP</button>
+  <button data-correct="false">GDB</button>
+</div>
+
+<div class="question" id="q3">Which shell is set as the default one for BSD systems:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">ksh</button>
+  <button data-correct="false">bash</button>
+  <button data-correct="false">zsh</button>
+  <button data-correct="true">tcsh</button>
+</div>
+
+<div class="question" id="q4">The file `--help` can be deleted by executing the following command:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">rm `--help`</button>
+  <button data-correct="false">rm `-- -help`</button>
+  <button data-correct="true">rm -- --help</button>
+  <button data-correct="false">rm --help</button>
+</div>
+
+<div class="question" id="q5">Error messages will be ignored if a command ends with:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">&amp;2&gt;/dev/null</button>
+  <button data-correct="false">&gt;/dev/null</button>
+  <button data-correct="false">$2&gt;/dev/null</button>
+  <button data-correct="true">2&gt;/dev/null</button>
+</div>
+
+<div class="question" id="q6">Value stored in the HOME variable can be displayed by executing:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">set $HOME</button>
+  <button data-correct="false">env ${HOME}</button>
+  <button data-correct="true">echo $HOME</button>
+  <button data-correct="false">cat $HOME</button>
+</div>
+
+<div class="question" id="q7">Which one appends '/sth' to a list of directories containing executables:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">PATH+=/sth</button>
+  <button data-correct="true">PATH=$PATH:/sth</button>
+  <button data-correct="false">$PATH=/sth</button>
+  <button data-correct="false">PATH=$PATH;:/sth</button>
+</div>
+
+<div class="question" id="q8">A file something.tar.gz can be fully decompressed with:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">tar</button>
+  <button data-correct="false">bzip2</button>
+  <button data-correct="false">untar</button>
+  <button data-correct="false">extract</button>
+</div>
+
+<div class="question" id="q9">Which utility allows making a simple backup copy of a file system:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">diff</button>
+  <button data-correct="true">rsync</button>
+  <button data-correct="false">sysctl</button>
+  <button data-correct="false">shadow</button>
+</div>
+
+<div class="question" id="q10">Which command deletes regular files older than 14 days in a current directory:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">find * -type f -mtime 14 -exec rm {} \;</button>
+  <button data-correct="false">find ~ -type -mtime +14 -exec rm {} \;</button>
+  <button data-correct="true">find . -type f -mtime +14 -exec rm {} \;</button>
+  <button data-correct="false">find . -type * +mtime 14 -exec rm {} \;</button>
+</div>
+
+<div class="question" id="q16">Permissions for the /etc directory should be set to:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">755</button>
+  <button data-correct="false">644</button>
+  <button data-correct="false">533</button>
+  <button data-correct="false">422</button>
+</div>
+
+<div class="question" id="q17">Typically umask is set to:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">0022</button>
+  <button data-correct="false">0644</button>
+  <button data-correct="false">0000</button>
+  <button data-correct="false">0755</button>
+</div>
+
+<div class="question" id="q18">ACL permissions can be displayed by:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">ls -a</button>
+  <button data-correct="false">acl</button>
+  <button data-correct="false">stat</button>
+  <button data-correct="true">getfacl</button>
+</div>
+
+<div class="question" id="q19">Which structure describes a file in a file system:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">f-stat</button>
+  <button data-correct="false">gecos</button>
+  <button data-correct="false">e-struct</button>
+  <button data-correct="true">inode</button>
+</div>
+
+<div class="question" id="q20">A binary file storing MBR copy can be created by executing:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">dd if=/dev/sda of=plik bs=512 count=1</button>
+  <button data-correct="false">du if=/dev/sd1 of=plik bs=512 count=1</button>
+  <button data-correct="false">df if=/dev/sda1 of=plik bs=512 count=1</button>
+  <button data-correct="false">dump if=sda of=plik bs=512 count=1</button>
+</div>
+
+<div class="question" id="q21">List of open files can be obtained by executing the command:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">who</button>
+  <button data-correct="false">fstab</button>
+  <button data-correct="true">lsof</button>
+  <button data-correct="false">file</button>
+</div>
+
+<div class="question" id="q22">The default file system for most Linux/GNU distros is:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">gfs</button>
+  <button data-correct="false">ufs</button>
+  <button data-correct="true">ext4</button>
+  <button data-correct="false">mkfs</button>
+</div>
+
+<div class="question" id="q23">A utility for checking/repairing file systems is:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">chkrootkit</button>
+  <button data-correct="true">fsck</button>
+  <button data-correct="false">rsync</button>
+  <button data-correct="false">chkfs</button>
+</div>
+
+<div class="question" id="q24">Bitmap icons are the most likely stored in some sub-directory of:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/lib</button>
+  <button data-correct="false">/var</button>
+  <button data-correct="true">/usr</button>
+  <button data-correct="false">/opt</button>
+</div>
+
+<div class="question" id="q25">fork() system call returns:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">child PID to a parent, 0 to a child</button>
+  <button data-correct="false">0 to a parent, parent PID to a child</button>
+  <button data-correct="false">child PID to a parent, parent PID to a child</button>
+  <button data-correct="false">0 to a parent, negative value to a child</button>
+</div>
+
+<div class="question" id="q26">A process group can be created by executing:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">cat plik | sort</button>
+  <button data-correct="false">cp plik plik2 || mv plik2</button>
+  <button data-correct="false">cat plik; sort plik2</button>
+  <button data-correct="false">cat plik > sort</button>
+</div>
+
+<div class="question" id="q27">Terminated but not waited by a parent process is called a:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">jedi</button>
+  <button data-correct="true">zombie</button>
+  <button data-correct="false">deadlock</button>
+  <button data-correct="false">waitpid</button>
+</div>
+
 <h1> 01 - Unix  </h1>
-
-  <!-- Q11 -->
-  <div class="question" id="q11">Which command displays the current working directory?</div>
+<!-- Theory questions -->
+<div class="question" id="q1">Which of the following is <strong>NOT</strong> one of the four essential freedoms granted by Free/Libre Open-Source Software?</div>
 <div class="choices" id="choices">
-    <button data-correct="true">pwd</button>
-    <button data-correct="false">cwd</button>
-    <button data-correct="false">whereami</button>
-    <button data-correct="false">locate .</button>
-  </div>
+  <button data-correct="false">Freedom to run the program for any purpose</button>
+  <button data-correct="true">Freedom to forbid others from redistributing the program</button>
+  <button data-correct="false">Freedom to study how the program works</button>
+  <button data-correct="false">Freedom to modify the program and share improvements</button>
+</div>
 
-  <!-- Q12 -->
-  <div class="question" id="q12">What component of Unix is responsible for managing hardware and resources?</div>
+<div class="question" id="q2">The phrase “free as in free&nbsp;speech, not as in free&nbsp;beer” stresses that “free” refers to&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">Kernel</button>
-    <button data-correct="false">Shell</button>
-    <button data-correct="false">Daemon</button>
-    <button data-correct="false">Filesystem</button>
-  </div>
+  <button data-correct="false">Zero purchase price</button>
+  <button data-correct="false">Public-domain status</button>
+  <button data-correct="true">User freedom to use, study, modify and share the software</button>
+  <button data-correct="false">Limited-time trial availability</button>
+</div>
 
-  <!-- Q13 -->
-  <div class="question" id="q13">Which file descriptor number corresponds to standard error (stderr)?</div>
+<div class="question" id="q3">Which action is permitted by the 2-clause BSD license but <em>not</em> by the GNU&nbsp;GPL?</div>
 <div class="choices" id="choices">
-    <button data-correct="false">0</button>
-    <button data-correct="true">2</button>
-    <button data-correct="false">1</button>
-    <button data-correct="false">3</button>
-  </div>
+  <button data-correct="true">Incorporating the code into a proprietary product without releasing its source</button>
+  <button data-correct="false">Redistributing modified source code</button>
+  <button data-correct="false">Attributing the original authors</button>
+  <button data-correct="false">Stating the software is provided “as&nbsp;is” without warranty</button>
+</div>
 
-  <!-- Q14 -->
-  <div class="question" id="q14">Which symbol redirects a command’s standard output to a file, overwriting it?</div>
+<div class="question" id="q4">Copyleft ensures that&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">></button>
-    <button data-correct="false">>>&nbsp;</button>
-    <button data-correct="false"><</button>
-    <button data-correct="false">|</button>
-  </div>
+  <button data-correct="false">Software cannot be modified by third parties</button>
+  <button data-correct="false">Derivative works may be relicensed under any terms</button>
+  <button data-correct="false">Source code must be kept secret after distribution</button>
+  <button data-correct="true">Any distributed modifications keep the same license as the original</button>
+</div>
 
-  <!-- Q15 -->
-  <div class="question" id="q15">What does the pipe symbol (`|`) do in a Unix command line?</div>
+<div class="question" id="q5">The POSIX standard chiefly defines&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">Passes stdout of the first command as stdin to the second</button>
-    <button data-correct="false">Backgrounds the process</button>
-    <button data-correct="false">Redirects stderr to stdout</button>
-    <button data-correct="false">Terminates the command sequence</button>
-  </div>
+  <button data-correct="false">Graphical user-interface guidelines</button>
+  <button data-correct="true">A set of system calls, a shell and basic utilities</button>
+  <button data-correct="false">TCP/IP network protocols</button>
+  <button data-correct="false">Package-management formats</button>
+</div>
 
-  <!-- Q16 -->
-  <div class="question" id="q16">Which permission bit allows a file to be executed?</div>
+<div class="question" id="q6">SUS Version 4 is also published as&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="false">r</button>
-    <button data-correct="false">w</button>
-    <button data-correct="true">x</button>
-    <button data-correct="false">s</button>
-  </div>
+  <button data-correct="false">POSIX : 1997</button>
+  <button data-correct="false">POSIX : 2001</button>
+  <button data-correct="true">POSIX : 2008 (IEEE Std 1003.1-2008)</button>
+  <button data-correct="false">POSIX : 2020</button>
+</div>
 
-  <!-- Q17 -->
-  <div class="question" id="q17">Which command lists running processes in the current terminal session?</div>
+<div class="question" id="q7">A system that passes official SUS certification may legally use the trademark&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">ps</button>
-    <button data-correct="false">proc</button>
-    <button data-correct="false">jobs</button>
-    <button data-correct="false">tasks</button>
-  </div>
+  <button data-correct="false">“POSIX&nbsp;OS”</button>
+  <button data-correct="true">“UNIX®”</button>
+  <button data-correct="false">“GNU/Linux”</button>
+  <button data-correct="false">“Open Source Certified”</button>
+</div>
 
-  <!-- Q18 -->
-  <div class="question" id="q18">Which environment variable specifies the directories searched for executables?</div>
+<div class="question" id="q8">Debian, Fedora and Arch are best described as&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">PATH</button>
-    <button data-correct="false">HOME</button>
-    <button data-correct="false">SHELL</button>
-    <button data-correct="false">PWD</button>
-  </div>
+  <button data-correct="false">Proprietary Unix systems</button>
+  <button data-correct="false">Commercial BSD derivatives</button>
+  <button data-correct="true">GNU/Linux distributions</button>
+  <button data-correct="false">Microkernels written in Ada</button>
+</div>
 
-  <!-- Q19 -->
-  <div class="question" id="q19">What does the `umask` command control?</div>
+<div class="question" id="q9">The maxim “Do one thing and do it well” expresses Unix’s design principle of&nbsp;…</div>
 <div class="choices" id="choices">
-    <button data-correct="true">Default file-creation permissions</button>
-    <button data-correct="false">User’s shell mask</button>
-    <button data-correct="false">Process memory limits</button>
-    <button data-correct="false">Masking of console output</button>
-  </div>
+  <button data-correct="true">Modularity</button>
+  <button data-correct="false">Privilege separation</button>
+  <button data-correct="false">Text manageability</button>
+  <button data-correct="false">Implicit configuration</button>
+</div>
 
-  <!-- Q20 -->
-  <div class="question" id="q20">Which directory typically contains user home directories on a Unix system?</div>
+<div class="question" id="q10">Which Unix principle insists that configuration and behaviour should be transparent rather than “magical”?</div>
 <div class="choices" id="choices">
-    <button data-correct="true">/home</button>
-    <button data-correct="false">/usr</button>
-    <button data-correct="false">/opt</button>
-    <button data-correct="false">/var</button>
-  </div>
+  <button data-correct="false">KISS</button>
+  <button data-correct="false">Modularity</button>
+  <button data-correct="true">Explicitness</button>
+  <button data-correct="false">Virtualisation</button>
+</div>
+
+<div class="question" id="q11">In what year was the first version of Unix created at Bell Labs?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">1965</button>
+  <button data-correct="true">1969</button>
+  <button data-correct="false">1972</button>
+  <button data-correct="false">1983</button>
+</div>
+
+<div class="question" id="q12">Which programming language did Dennis Ritchie devise to rewrite Unix in 1972?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Java</button>
+  <button data-correct="true">C</button>
+  <button data-correct="false">Python</button>
+  <button data-correct="false">Pascal</button>
+</div>
+
+<div class="question" id="q13">Who launched the GNU Project in 1983?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Linus Torvalds</button>
+  <button data-correct="false">Dennis Ritchie</button>
+  <button data-correct="true">Richard Stallman</button>
+  <button data-correct="false">Ken Thompson</button>
+</div>
+
+<div class="question" id="q14">The GNU GPL is a&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Public-domain waiver</button>
+  <button data-correct="true">Copyleft license requiring derivative works to remain under the GPL</button>
+  <button data-correct="false">Proprietary end-user licence agreement</button>
+  <button data-correct="false">Cost-free demo licence</button>
+</div>
+
+<div class="question" id="q15">Running services with only the permissions they need exemplifies the Unix concept of&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Privilege separation</button>
+  <button data-correct="false">KISS</button>
+  <button data-correct="false">Text manageability</button>
+  <button data-correct="false">Free-beer licensing</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What does the command <code>whoami</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The user’s UID number</button>
+  <button data-correct="true">The effective user name of the current process</button>
+  <button data-correct="false">The system’s host name</button>
+  <button data-correct="false">The running kernel version</button>
+</div>
+
+<div class="question" id="q17">Which command shows GNU Bash’s version and licence information?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">bash&nbsp;-c&nbsp;version</button>
+  <button data-correct="true">bash&nbsp;--version</button>
+  <button data-correct="false">version&nbsp;bash</button>
+  <button data-correct="false">bashversion</button>
+</div>
+
+<div class="question" id="q18">To display version information for <code>ls</code>, which option should you use?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-v</button>
+  <button data-correct="false">--license</button>
+  <button data-correct="true">--version</button>
+  <button data-correct="false">/version</button>
+</div>
+
+<div class="question" id="q19">The first line of <code>date&nbsp;--version</code> identifies the utility as part of which GNU package?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">coreutils</button>
+  <button data-correct="false">diffutils</button>
+  <button data-correct="false">util-linux</button>
+  <button data-correct="false">findutils</button>
+</div>
+
+<div class="question" id="q20">Executing <code>uname&nbsp;-r</code> prints the system’s&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Operating-system name only</button>
+  <button data-correct="false">Current user name</button>
+  <button data-correct="false">Network host name</button>
+  <button data-correct="true">Kernel release version string</button>
+</div>
+
+<div class="question" id="q21">Which <code>uname</code> option typically outputs <code>GNU/Linux</code> on a Linux distribution?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-s</button>
+  <button data-correct="false">-n</button>
+  <button data-correct="true">-o</button>
+  <button data-correct="false">-p</button>
+</div>
+
+<div class="question" id="q22">What does <code>echo&nbsp;$HOME</code> print?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">The absolute path of the current user’s home directory</button>
+  <button data-correct="false">The current working directory</button>
+  <button data-correct="false">The kernel’s boot-time</button>
+  <button data-correct="false">Nothing (it is unset by default)</button>
+</div>
+
+<div class="question" id="q23">Running <code>echo&nbsp;$PATH</code> shows&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A list of logged-in users</button>
+  <button data-correct="true">A colon-separated list of directories searched for executables</button>
+  <button data-correct="false">The last command’s exit status</button>
+  <button data-correct="false">Mounted file-systems</button>
+</div>
+
+<div class="question" id="q24">Which command quickly counts the number of lines in <code>/etc/group</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">wc&nbsp;-w&nbsp;/etc/group</button>
+  <button data-correct="false">nl&nbsp;/etc/group</button>
+  <button data-correct="true">wc&nbsp;-l&nbsp;&lt;&nbsp;/etc/group</button>
+  <button data-correct="false">head&nbsp;-n&nbsp;/etc/group</button>
+</div>
+
+<div class="question" id="q25">What number is printed by <code>true&nbsp;;&nbsp;echo&nbsp;$?</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">1</button>
+  <button data-correct="true">0</button>
+  <button data-correct="false">255</button>
+  <button data-correct="false">No output at all</button>
+</div>
+
+<div class="question" id="q26">The command <code>man&nbsp;7&nbsp;signal</code> opens a manual page that describes&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Kernel device drivers</button>
+  <button data-correct="false">Filesystem layouts</button>
+  <button data-correct="true">The POSIX signal interface and list of signals</button>
+  <button data-correct="false">Bash built-in commands</button>
+</div>
+
+<div class="question" id="q27">On a Debian-based system, which command opens the complete text of the GNU GPL&nbsp;v3 in an interactive pager?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">cat&nbsp;/usr/share/common-licenses/GPL-3</button>
+  <button data-correct="false">nano&nbsp;/usr/share/common-licenses/GPL-3</button>
+  <button data-correct="false">gpl&nbsp;--version</button>
+  <button data-correct="true">less&nbsp;/usr/share/common-licenses/GPL-3</button>
+</div>
+
+<div class="question" id="q28">What is the effect of <code>grep&nbsp;-i&nbsp;"bsd"&nbsp;/usr/share/common-licenses/BSD&nbsp;|&nbsp;head&nbsp;-n1</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Displays the first line that contains “bsd”, ignoring case</button>
+  <button data-correct="false">Counts all occurrences of “bsd”</button>
+  <button data-correct="false">Replaces “bsd” with “BSD” throughout the file</button>
+  <button data-correct="false">Deletes the BSD licence file</button>
+</div>
+
+<div class="question" id="q29">Which <code>curl</code> command downloads the 2-clause BSD licence into a file named <code>bsd.html</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">curl&nbsp;-l&nbsp;bsd.html&nbsp;https://www.freebsd.org/copyright/freebsd-license.html</button>
+  <button data-correct="true">curl&nbsp;-o&nbsp;bsd.html&nbsp;https://www.freebsd.org/copyright/freebsd-license.html</button>
+  <button data-correct="false">curl&nbsp;-d&nbsp;bsd.html&nbsp;https://www.freebsd.org/copyright/freebsd-license.html</button>
+  <button data-correct="false">curl&nbsp;https://www.freebsd.org/copyright/freebsd-license.html&nbsp;&gt;&nbsp;bsd.txt</button>
+</div>
+
+<div class="question" id="q30">What value is printed by <code>bash&nbsp;-c&nbsp;'exit&nbsp;42'&nbsp;;&nbsp;echo&nbsp;$?</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">0</button>
+  <button data-correct="true">42</button>
+  <button data-correct="false">255</button>
+  <button data-correct="false">The PID of <code>bash</code></button>
+</div>
+
 
 <h1> 02 - Bash  </h1>
-  <!-- Q21 -->
-  <div class="question" id="q21">How do you correctly assign the value 42 to variable X in Bash?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">X=42</button>
-    <button data-correct="false">X =42</button>
-    <button data-correct="false">X = 42</button>
-    <button data-correct="false">let X = 42</button>
-  </div>
+  <!-- Theory questions -->
+<div class="question" id="q1">Which built-in Bash variable expands to your home directory path when unquoted?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">$PWD</button>
+  <button data-correct="true">$HOME</button>
+  <button data-correct="false">$SHELL</button>
+  <button data-correct="false">$PATH</button>
+</div>
 
-  <!-- Q22 -->
-  <div class="question" id="q22">Which syntax correctly expands the variable NAME in a string?</div>
-  <div class="choices" id="choices">
-    <button data-correct="false">%NAME%</button>
-    <button data-correct="true">${NAME}</button>
-    <button data-correct="false">$(NAME)</button>
-    <button data-correct="false">£{NAME}</button>
-  </div>
+<div class="question" id="q2">Which character starts a comment in an interactive Bash command line?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">%</button>
+  <button data-correct="false">;</button>
+  <button data-correct="false">!</button>
+  <button data-correct="true">#</button>
+</div>
 
-  <!-- Q23 -->
-  <div class="question" id="q23">What is the effect of enclosing text in double quotes in Bash?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">Prevents word splitting but still allows variable and command expansion</button>
-    <button data-correct="false">Prevents both word splitting and any expansion</button>
-    <button data-correct="false">Performs pathname expansion only</button>
-    <button data-correct="false">Acts the same as single quotes</button>
-  </div>
+<div class="question" id="q3">The <code>HISTSIZE</code> variable controls:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Maximum prompt length</button>
+  <button data-correct="false">Default editor</button>
+  <button data-correct="true">Number of commands kept in memory history</button>
+  <button data-correct="false">Path to <code>.bash_history</code> file</button>
+</div>
 
-  <!-- Q24 -->
-  <div class="question" id="q24">Which exit status indicates a successful command execution?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">0</button>
-    <button data-correct="false">1</button>
-    <button data-correct="false">127</button>
-    <button data-correct="false">255</button>
-  </div>
+<div class="question" id="q4">Pressing <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal sends which signal to the foreground process?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGTERM</button>
+  <button data-correct="false">SIGHUP</button>
+  <button data-correct="true">SIGINT</button>
+  <button data-correct="false">SIGKILL</button>
+</div>
 
-  <!-- Q25 -->
-  <div class="question" id="q25">How do you define a function named greet in Bash?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">greet() { echo "Hello"; }</button>
-    <button data-correct="false">function: greet() echo "Hello"</button>
-    <button data-correct="false">def greet { echo "Hello" }</button>
-    <button data-correct="false">greet => { echo "Hello" }</button>
-  </div>
+<div class="question" id="q5">In Bash auto-completion, pressing <kbd>TAB</kbd> twice when multiple matches exist will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Insert the first match automatically</button>
+  <button data-correct="true">Display a list of all possible completions</button>
+  <button data-correct="false">Delete the current word</button>
+  <button data-correct="false">Abort the command</button>
+</div>
 
-  <!-- Q26 -->
-  <div class="question" id="q26">Which construct iterates over a list of items in Bash?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">for item in a b c; do …; done</button>
-    <button data-correct="false">foreach item in (a b c) { … }</button>
-    <button data-correct="false">loop item of a, b, c { … }</button>
-    <button data-correct="false">while item in a b c; do …; done</button>
-  </div>
+<div class="question" id="q6">Which per-interactive-shell startup file is executed for non-login Bash sessions?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/profile</button>
+  <button data-correct="false">~/.bash_profile</button>
+  <button data-correct="true">~/.bashrc</button>
+  <button data-correct="false">~/.bash_logout</button>
+</div>
 
-  <!-- Q27 -->
-  <div class="question" id="q27">How do you redirect standard error (stderr) to the same place as standard output?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">2>&1</button>
-    <button data-correct="false">&>2</button>
-    <button data-correct="false">1>&2</button>
-    <button data-correct="false">2>1</button>
-  </div>
+<div class="question" id="q7">Which command shows the current set of environment variables?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">env</button>
+  <button data-correct="false">setfacl</button>
+  <button data-correct="false">ulimit</button>
+  <button data-correct="false">alias</button>
+</div>
 
-  <!-- Q28 -->
-  <div class="question" id="q28">Which operator appends command output to a file instead of overwriting it?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">>></button>
-    <button data-correct="false">></button>
-    <button data-correct="false"><</button>
-    <button data-correct="false">|></button>
-  </div>
+<div class="question" id="q8">Which wildcard matches exactly one character in a filename?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">*</button>
+  <button data-correct="true">?</button>
+  <button data-correct="false">[]</button>
+  <button data-correct="false">~</button>
+</div>
 
-  <!-- Q29 -->
-  <div class="question" id="q29">Which syntax captures the output of ls into a variable LIST?</div>
-  <div class="choices" id="choices">
-    <button data-correct="false">LIST=`ls`</button>
-    <button data-correct="true">LIST=$(ls)</button>
-    <button data-correct="false">LIST<<ls>></button>
-    <button data-correct="false">LIST=[ls]</button>
-  </div>
+<div class="question" id="q9">The variable <code>PS1</code> is primarily used to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Specify default editor</button>
+  <button data-correct="false">Store last exit status</button>
+  <button data-correct="false">Control command history size</button>
+  <button data-correct="true">Define the primary command prompt string</button>
+</div>
 
-  <!-- Q30 -->
-  <div class="question" id="q30">How do you print "Done" without a trailing newline?</div>
-  <div class="choices" id="choices">
-    <button data-correct="true">echo -n "Done"</button>
-    <button data-correct="false">printf "Done\n"</button>
-    <button data-correct="false">echo "Done" \\c</button>
-    <button data-correct="false">echo -e "Done"</button>
-  </div>
+<div class="question" id="q10">Preceding a special character with a backslash (<code>\</code>) in Bash will:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Remove its special meaning for that occurrence</button>
+  <button data-correct="false">Duplicate the character</button>
+  <button data-correct="false">Start a subshell</button>
+  <button data-correct="false">Send output to stderr</button>
+</div>
+
+<div class="question" id="q11">Which special parameter expands to the exit status of the most recently executed pipeline?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">$#</button>
+  <button data-correct="false">$0</button>
+  <button data-correct="true">$?</button>
+  <button data-correct="false">$$</button>
+</div>
+
+<div class="question" id="q12">When unquoted, the tilde (<code>~</code>) at the start of a word expands to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The previous directory</button>
+  <button data-correct="false">Root directory</button>
+  <button data-correct="true">Current user’s home directory</button>
+  <button data-correct="false">An empty string</button>
+</div>
+
+<div class="question" id="q13">Which built-in command lists the numbered history of commands for the current session?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">jobs</button>
+  <button data-correct="true">history</button>
+  <button data-correct="false">type</button>
+  <button data-correct="false">hash</button>
+</div>
+
+<div class="question" id="q14">According to Unix convention, which exit status signifies successful completion of a command?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">0</button>
+  <button data-correct="false">1</button>
+  <button data-correct="false">-1</button>
+  <button data-correct="false">255</button>
+</div>
+
+<div class="question" id="q15">Which system-wide initialization file is executed for <em>login</em> shells?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/bashrc</button>
+  <button data-correct="false">/etc/profile.d/default.sh</button>
+  <button data-correct="true">/etc/profile</button>
+  <button data-correct="false">/etc/skel/.bashrc</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What is the effect of running <code>touch -- --help</code> in an empty directory?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Displays <code>touch</code> help text</button>
+  <button data-correct="false">Creates a directory named <code>--</code></button>
+  <button data-correct="true">Creates a file literally called <code>--help</code></button>
+  <button data-correct="false">Returns an error due to invalid option</button>
+</div>
+
+<div class="question" id="q17">Which command lists <strong>all</strong> entries in <code>/etc</code> except <code>.</code> and <code>..</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">ls -a /etc</button>
+  <button data-correct="false">ls -l /etc</button>
+  <button data-correct="true">ls -A /etc</button>
+  <button data-correct="false">ls --all /etc</button>
+</div>
+
+<div class="question" id="q18">Executing <code>echo \$PATH</code> (note the backslash) prints:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The expanded <code>PATH</code> value</button>
+  <button data-correct="false">Nothing (empty line)</button>
+  <button data-correct="true">The literal string <code>$PATH</code></button>
+  <button data-correct="false">The current directory only</button>
+</div>
+
+<div class="question" id="q19">What happens after running <code>cd /nonexisting && pwd</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Prints <code>/nonexisting</code></button>
+  <button data-correct="true">Nothing, because <code>pwd</code> is skipped when <code>cd</code> fails</button>
+  <button data-correct="false">Creates <code>/nonexisting</code> then prints its path</button>
+  <button data-correct="false">Always prints the home directory</button>
+</div>
+
+<div class="question" id="q20">The command <code>sort -t: -k3 -n /etc/passwd</code> sorts <code>/etc/passwd</code> by:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">First field alphabetically</button>
+  <button data-correct="false">Second field numerically</button>
+  <button data-correct="true">Third field numerically using <code>:</code> as the delimiter</button>
+  <button data-correct="false">File size</button>
+</div>
+
+<div class="question" id="q21">Running <code>PATH=${PATH}:.</code> immediately allows you to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Disable command hashing</button>
+  <button data-correct="false">Clear the <code>PATH</code></button>
+  <button data-correct="true">Execute programs in the current directory without <code>./</code> prefix</button>
+  <button data-correct="false">Change your home directory</button>
+</div>
+
+<div class="question" id="q22">What does <code>!!</code> do in an interactive Bash session?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Clears the command history</button>
+  <button data-correct="false">Repeats the last command <em>twice</em></button>
+  <button data-correct="true">Expands to and executes the previous command</button>
+  <button data-correct="false">Shows the history list number of the last command</button>
+</div>
+
+<div class="question" id="q23">Using <code>history | grep ls</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Delete all <code>ls</code> commands from history</button>
+  <button data-correct="false">Execute every matching <code>ls</code> command</button>
+  <button data-correct="true">Display only history entries containing the string <code>ls</code></button>
+  <button data-correct="false">Redirect history output to <code>ls</code></button>
+</div>
+
+<div class="question" id="q24">Given <code>SOMEVAR=ls</code> followed by <code>$SOMEVAR</code>, Bash will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Print the string <code>ls</code></button>
+  <button data-correct="true">Execute the <code>ls</code> command</button>
+  <button data-correct="false">Unset <code>SOMEVAR</code></button>
+  <button data-correct="false">Create an alias for <code>ls</code></button>
+</div>
+
+<div class="question" id="q25">Inside <code>SOMEDIR</code> you run <code>touch \*</code>. Which file now exists?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">No file; the command fails</button>
+  <button data-correct="false">Every possible filename</button>
+  <button data-correct="true">A single file literally named <code>*</code></button>
+  <button data-correct="false">Files matching the current wildcard expansion</button>
+</div>
+
+<div class="question" id="q26">Executing <code>rm filename\ with\ spaces</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Remove the single file whose name contains spaces</button>
+  <button data-correct="false">Remove three separate files</button>
+  <button data-correct="false">Fail because spaces are not allowed</button>
+  <button data-correct="false">Prompt for every file in the directory</button>
+</div>
+
+<div class="question" id="q27">What is the effect of <code>history -c</code> in the current shell?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Deletes <code>.bash_history</code> from disk immediately</button>
+  <button data-correct="true">Clears the in-memory history list for this session</button>
+  <button data-correct="false">Disables future command logging permanently</button>
+  <button data-correct="false">Displays history in compact form</button>
+</div>
+
+<div class="question" id="q28">After <code>echo 'Hello'</code> you run <code>echo #'World'</code>. What is printed?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Hello World</button>
+  <button data-correct="false">World</button>
+  <button data-correct="true">An empty line (the second command is a comment)</button>
+  <button data-correct="false">#World</button>
+</div>
+
+<div class="question" id="q29">If <code>VAR=CAT</code>, what does <code>echo ${VAR}erpillar</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">CATERPILLAR</button>
+  <button data-correct="false">CAT erpillar</button>
+  <button data-correct="false">erpillar</button>
+  <button data-correct="false">${VAR}erpillar</button>
+</div>
+
+<div class="question" id="q30">Running <code>echo \</code> followed by an immediate newline will cause Bash to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Exit with error</button>
+  <button data-correct="false">Print a backslash</button>
+  <button data-correct="true">Expect the command to continue on the next line</button>
+  <button data-correct="false">Ignore the backslash and execute immediately</button>
+</div>
+
+
+  <h1> 03 - Commands </h1>
+  <!-- Theory questions -->
+<div class="question" id="q1">Which manual section covers <em>Devices and Special Files</em>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">2</button>
+  <button data-correct="true">4</button>
+  <button data-correct="false">5</button>
+  <button data-correct="false">7</button>
+</div>
+
+<div class="question" id="q2">In <code>screen</code>, which key sequence detaches the current session from the terminal?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Ctrl-B&nbsp;D</button>
+  <button data-correct="false">Ctrl-C&nbsp;D</button>
+  <button data-correct="true">Ctrl-A&nbsp;D</button>
+  <button data-correct="false">Ctrl-D&nbsp;A</button>
+</div>
+
+<div class="question" id="q3">Which utility records everything printed on your terminal into a file named <code>typescript</code> by default?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">tee</button>
+  <button data-correct="false">scriptreplay</button>
+  <button data-correct="true">script</button>
+  <button data-correct="false">logger</button>
+</div>
+
+<div class="question" id="q4">What does the command <code>lscpu</code> display?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">CPU architecture information</button>
+  <button data-correct="false">PCI device list</button>
+  <button data-correct="false">USB device list</button>
+  <button data-correct="false">Kernel messages</button>
+</div>
+
+<div class="question" id="q5">Which option to <code>free</code> shows memory sizes in KiB / MiB / GiB instead of bytes?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-k</button>
+  <button data-correct="false">-m</button>
+  <button data-correct="true">-h</button>
+  <button data-correct="false">-g</button>
+</div>
+
+<div class="question" id="q6">Which command shows logged-in users <strong>and</strong> the commands they are currently running?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">who</button>
+  <button data-correct="false">last</button>
+  <button data-correct="true">w</button>
+  <button data-correct="false">id</button>
+</div>
+
+<div class="question" id="q7">By default, how many lines does <code>head</code> display when no option is given?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">5</button>
+  <button data-correct="true">10</button>
+  <button data-correct="false">15</button>
+  <button data-correct="false">20</button>
+</div>
+
+<div class="question" id="q8">Which <code>tar</code> option compresses an archive with <code>gzip</code> in a single step?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-j</button>
+  <button data-correct="false">-J</button>
+  <button data-correct="true">-z</button>
+  <button data-correct="false">-Z</button>
+</div>
+
+<div class="question" id="q9">A compressed tarball created with <code>xz</code> typically ends with which extension?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">.tgz</button>
+  <button data-correct="false">.tbz2</button>
+  <button data-correct="true">.tar.xz</button>
+  <button data-correct="false">.zip</button>
+</div>
+
+<div class="question" id="q10">In <code>find</code>, which action executes a command on each matching file?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-print</button>
+  <button data-correct="true">-exec</button>
+  <button data-correct="false">-delete</button>
+  <button data-correct="false">-ok</button>
+</div>
+
+<div class="question" id="q11">Which <code>ls</code> option sorts the listing by modification time?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-S</button>
+  <button data-correct="true">-t</button>
+  <button data-correct="false">-r</button>
+  <button data-correct="false">-X</button>
+</div>
+
+<div class="question" id="q12">Which command updates a file’s access and modification timestamps or creates it if it doesn’t exist?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">touchpad</button>
+  <button data-correct="false">mtime</button>
+  <button data-correct="true">touch</button>
+  <button data-correct="false">update</button>
+</div>
+
+<div class="question" id="q13">What does <code>pwd</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Previous working directory</button>
+  <button data-correct="false">User’s home directory</button>
+  <button data-correct="true">Absolute path of the current directory</button>
+  <button data-correct="false">Current user name</button>
+</div>
+
+<div class="question" id="q14">The command <code>cd -</code> changes to which directory?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Root directory</button>
+  <button data-correct="false">Home directory</button>
+  <button data-correct="true">Previous working directory</button>
+  <button data-correct="false">Parent directory</button>
+</div>
+
+<div class="question" id="q15">Which pager allows backward scrolling and regex searching while viewing a file?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">more</button>
+  <button data-correct="true">less</button>
+  <button data-correct="false">cat</button>
+  <button data-correct="false">head</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What will <code>man&nbsp;5&nbsp;passwd</code> display?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The C library function <code>passwd()</code></button>
+  <button data-correct="true">Manual page for the password file format</button>
+  <button data-correct="false">General help about passwords</button>
+  <button data-correct="false">Nothing; the command is invalid</button>
+</div>
+
+<div class="question" id="q17">Running <code>cal&nbsp;-y</code> prints:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Current month only</button>
+  <button data-correct="false">Three-month calendar</button>
+  <button data-correct="true">The entire calendar for the current year</button>
+  <button data-correct="false">Next year’s calendar</button>
+</div>
+
+<div class="question" id="q18">After executing <code>uname&nbsp;-r</code>, you will see:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">CPU model</button>
+  <button data-correct="true">Kernel release version</button>
+  <button data-correct="false">Hostname</button>
+  <button data-correct="false">Operating system name</button>
+</div>
+
+<div class="question" id="q19">What does <code>ls&nbsp;-A</code> list that <code>ls</code> without options does <em>not</em> include?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">File sizes</button>
+  <button data-correct="false">Parent directory&nbsp;<code>..</code></button>
+  <button data-correct="true">Entries whose names begin with a dot</button>
+  <button data-correct="false">Sub-subdirectories</button>
+</div>
+
+<div class="question" id="q20">The command <code>ln&nbsp;-s&nbsp;file&nbsp;link</code> creates:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A hard link named <code>link</code></button>
+  <button data-correct="false">A copy of <code>file</code></button>
+  <button data-correct="true">A symbolic link pointing to <code>file</code></button>
+  <button data-correct="false">An empty file called <code>link</code></button>
+</div>
+
+<div class="question" id="q21">What happens when you run <code>rm&nbsp;-r&nbsp;dir</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Deletes only empty directories inside <code>dir</code></button>
+  <button data-correct="true">Recursively removes <code>dir</code> and all its contents</button>
+  <button data-correct="false">Prompts once per file even without <code>-i</code></button>
+  <button data-correct="false">Moves <code>dir</code> to the trash can</button>
+</div>
+
+<div class="question" id="q22">With <code>rsync&nbsp;-avzn&nbsp;--delete&nbsp;src/&nbsp;dest/</code>, the <code>-n</code> option makes rsync:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Perform a dry run without changing anything</button>
+  <button data-correct="false">Force deletion at destination</button>
+  <button data-correct="false">Show numerical progress only</button>
+  <button data-correct="false">Disable compression</button>
+</div>
+
+<div class="question" id="q23">The command <code>diff&nbsp;-y&nbsp;file1&nbsp;file2</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Create a patch file</button>
+  <button data-correct="true">Display differences side-by-side in two columns</button>
+  <button data-correct="false">Merge the files automatically</button>
+  <button data-correct="false">Suppress common lines</button>
+</div>
+
+<div class="question" id="q24">After running <code>gzip&nbsp;myfile</code>, which of the following is true?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A directory named <code>myfile.gz</code> is created</button>
+  <button data-correct="false">Original file remains and <code>myfile.gz</code> is added</button>
+  <button data-correct="true"><code>myfile</code> is replaced by <code>myfile.gz</code></button>
+  <button data-correct="false">Two files <code>myfile</code> and <code>myfile.gzip</code> appear</button>
+</div>
+
+<div class="question" id="q25">Executing <code>tar&nbsp;-xvzf&nbsp;archive.tar.gz</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">List archive contents without extraction</button>
+  <button data-correct="true">Extract a gzip-compressed tarball verbosely</button>
+  <button data-correct="false">Compress files into <code>archive.tar.gz</code></button>
+  <button data-correct="false">Convert archive to xz format</button>
+</div>
+
+<div class="question" id="q26">What is the purpose of <code>find&nbsp;/etc&nbsp;-name&nbsp;"*.conf"&nbsp;-mtime&nbsp;+60&nbsp;2&gt;/dev/null</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Edit all configuration files newer than 60 days</button>
+  <button data-correct="false">Delete old configuration files</button>
+  <button data-correct="true">List <code>.conf</code> files older than 60 days while hiding permission errors</button>
+  <button data-correct="false">Print only permission errors</button>
+</div>
+
+<div class="question" id="q27">Running <code>find&nbsp;. -type f -exec rm&nbsp;{} \;</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Remove only empty directories</button>
+  <button data-correct="true">Delete every regular file under the current directory</button>
+  <button data-correct="false">Print filenames without deleting</button>
+  <button data-correct="false">Fail unless run as root</button>
+</div>
+
+<div class="question" id="q28">After <code>touch&nbsp;"a&nbsp;b&nbsp;c"</code>, the result is:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Three files: <code>a</code>, <code>b</code>, and <code>c</code></button>
+  <button data-correct="true">One file whose name contains spaces</button>
+  <button data-correct="false">No file is created due to invalid name</button>
+  <button data-correct="false">A directory named <code>a&nbsp;b&nbsp;c</code></button>
+</div>
+
+<div class="question" id="q29">What does <code>cp&nbsp;/etc/passwd&nbsp;.</code> accomplish?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Deletes <code>/etc/passwd</code></button>
+  <button data-correct="false">Moves <code>/etc/passwd</code> to current directory</button>
+  <button data-correct="true">Copies <code>/etc/passwd</code> into the current directory keeping its name</button>
+  <button data-correct="false">Creates a symbolic link</button>
+</div>
+
+<div class="question" id="q30">After changing to <code>/etc</code>, which command returns directly to your home directory?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">cd&nbsp;/</button>
+  <button data-correct="false">cd&nbsp;-</button>
+  <button data-correct="true">cd&nbsp;~</button>
+  <button data-correct="false">cd&nbsp;..</button>
+</div>
+
+
+  <h1> 04 - Streams and pipelines </h1>
+  <!-- Theory questions -->
+<div class="question" id="q1">Which numeric descriptor does a Unix process use for the <em>stderr</em> stream?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">0</button>
+  <button data-correct="false">1</button>
+  <button data-correct="true">2</button>
+  <button data-correct="false">3</button>
+</div>
+
+<div class="question" id="q2">Which shell operator appends <strong>stdout</strong> to a file instead of overwriting it?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">&gt;</button>
+  <button data-correct="true">&gt;&gt;</button>
+  <button data-correct="false">|</button>
+  <button data-correct="false"><code>&gt;&amp;</code></button>
+</div>
+
+<div class="question" id="q3">The special file <code>/dev/null</code> is best described as a:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Named pipe</button>
+  <button data-correct="false">Random-byte generator</button>
+  <button data-correct="false">Character device for keyboard input</button>
+  <button data-correct="true">Data sink that discards all input</button>
+</div>
+
+<div class="question" id="q4">Which single character connects one command’s <em>stdout</em> to another’s <em>stdin</em> to form a pipeline?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">|</button>
+  <button data-correct="false">&amp;</button>
+  <button data-correct="false">;</button>
+  <button data-correct="false">\</button>
+</div>
+
+<div class="question" id="q5">Running <code>tail -f logfile</code> makes the command:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Print the first ten lines of <code>logfile</code> and exit</button>
+  <button data-correct="true">Follow <code>logfile</code>, showing new lines as they are appended</button>
+  <button data-correct="false">Remove <code>logfile</code> if it grows</button>
+  <button data-correct="false">Fork into the background automatically</button>
+</div>
+
+<div class="question" id="q6">Which standard stream is conventionally used for normal program output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">stdin</button>
+  <button data-correct="false">stderr</button>
+  <button data-correct="true">stdout</button>
+  <button data-correct="false">stdlog</button>
+</div>
+
+<div class="question" id="q7">In Bash, which construct merges <em>stderr</em> into an already-redirected <em>stdout</em>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">2&gt;</button>
+  <button data-correct="true">2&gt;&amp;1</button>
+  <button data-correct="false">&gt;&amp;2</button>
+  <button data-correct="false">&gt;2&amp;1</button>
+</div>
+
+<div class="question" id="q8">Classic command substitution surrounds a command with:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">$()</button>
+  <button data-correct="true">Back-ticks (<code>`command`</code>)</button>
+  <button data-correct="false">{ }</button>
+  <button data-correct="false">Double braces <code>{{ }}</code></button>
+</div>
+
+<div class="question" id="q9">Which filter reports the number of lines, words, and characters in its input?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">sort</button>
+  <button data-correct="false">grep</button>
+  <button data-correct="true">wc</button>
+  <button data-correct="false">uniq</button>
+</div>
+
+<div class="question" id="q10">To count <em>characters</em> only, which option would you pass to <code>wc</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-l</button>
+  <button data-correct="false">-w</button>
+  <button data-correct="true">-c</button>
+  <button data-correct="false">-n</button>
+</div>
+
+<div class="question" id="q11">Which command alphabetically sorts the lines it receives on <em>stdin</em>?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">sort</button>
+  <button data-correct="false">strings</button>
+  <button data-correct="false">head</button>
+  <button data-correct="false">diff</button>
+</div>
+
+<div class="question" id="q12">In a POSIX regular expression, the caret (<code>^</code>) symbol matches:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Start of the string</button>
+  <button data-correct="false">Any single character</button>
+  <button data-correct="false">End of the string</button>
+  <button data-correct="false">A literal caret character</button>
+</div>
+
+<div class="question" id="q13">Which <code>grep</code> option enables <em>extended</em> regular expressions (ERE)?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-F</button>
+  <button data-correct="false">-P</button>
+  <button data-correct="true">-E</button>
+  <button data-correct="false">-Z</button>
+</div>
+
+<div class="question" id="q14">To make <code>grep</code> search directories recursively, you would use:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-e</button>
+  <button data-correct="false">-i</button>
+  <button data-correct="true">-R (or -r)</button>
+  <button data-correct="false">-l</button>
+</div>
+
+<div class="question" id="q15">What is the main purpose of a <em>pipeline filter</em> program?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Provide a graphical user interface</button>
+  <button data-correct="true">Process data read from <em>stdin</em> and send results to <em>stdout</em></button>
+  <button data-correct="false">Create new user accounts</button>
+  <button data-correct="false">Generate random numbers</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">After executing <code>echo -n &gt; file1</code>, what is the state of <code>file1</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">It is deleted from the filesystem</button>
+  <button data-correct="true">It exists but is now zero bytes long</button>
+  <button data-correct="false">Its permissions are removed</button>
+  <button data-correct="false">It is moved to <code>/tmp</code></button>
+</div>
+
+<div class="question" id="q17">What does the command <code>date &gt;&gt; log.txt</code> achieve?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Replaces <code>log.txt</code> with the current date only</button>
+  <button data-correct="false">Writes date output to <em>stderr</em></button>
+  <button data-correct="false">Creates a pipeline</button>
+  <button data-correct="true">Appends the current date to <code>log.txt</code></button>
+</div>
+
+<div class="question" id="q18">Running <code>ls -A | wc -l</code> will print:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Number of directory entries (including dot-files)</button>
+  <button data-correct="false">Total size of the directory in bytes</button>
+  <button data-correct="false">Count of running processes</button>
+  <button data-correct="false">List of hidden files only</button>
+</div>
+
+<div class="question" id="q19">Which command correctly discards both <em>stdout</em> and <em>stderr</em>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">cmd 2&gt;/dev/null</button>
+  <button data-correct="false">cmd &gt;/dev/null</button>
+  <button data-correct="true">cmd &gt;/dev/null 2&gt;&amp;1</button>
+  <button data-correct="false">cmd 2|&gt; /dev/null</button>
+</div>
+
+<div class="question" id="q20">The pipeline <code>head -n7 /etc/passwd | tail -n1</code> outputs:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">First seven lines of the file</button>
+  <button data-correct="true">Exactly the seventh line of the file</button>
+  <button data-correct="false">Lines 8-14 of the file</button>
+  <button data-correct="false">An empty result</button>
+</div>
+
+<div class="question" id="q21">Executing <code>touch "`date`"</code> (with the back-ticks) will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Change the system date</button>
+  <button data-correct="false">Append date output to an existing file called <code>date</code></button>
+  <button data-correct="true">Create an empty file whose name is the current date string</button>
+  <button data-correct="false">Rename all files to the current date</button>
+</div>
+
+<div class="question" id="q22">What is the effect of <code>find /etc -name "*.conf" -mtime +60 2&gt;/dev/null</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Finds <code>.conf</code> files modified within the last hour</button>
+  <button data-correct="true">Lists <code>.conf</code> files older than 60&nbsp;days while suppressing permission errors</button>
+  <button data-correct="false">Deletes all matching files</button>
+  <button data-correct="false">Outputs only the errors produced by <code>find</code></button>
+</div>
+
+<div class="question" id="q23">The command <code>env | sort</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Remove duplicate environment variables</button>
+  <button data-correct="false">Reverse the order of variables</button>
+  <button data-correct="true">Display environment variables in alphabetical order</button>
+  <button data-correct="false">Convert variable names to uppercase</button>
+</div>
+
+<div class="question" id="q24">Why might one run <code>strings /bin/bash | grep License</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">To edit the Bash binary in place</button>
+  <button data-correct="false">To encrypt the Bash executable</button>
+  <button data-correct="true">To search printable strings in the binary for the word “License”</button>
+  <button data-correct="false">To check file permissions</button>
+</div>
+
+<div class="question" id="q25">Executing <code>cat /dev/urandom | strings</code> produces:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Hardware sensor data</button>
+  <button data-correct="true">Random printable strings extracted from random bytes</button>
+  <button data-correct="false">An infinite sequence of zeros</button>
+  <button data-correct="false">Nothing; <code>strings</code> filters everything out</button>
+</div>
+
+<div class="question" id="q26">Which <code>grep</code> flag makes the command output only lines <em>not</em> matching the pattern?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">-o</button>
+  <button data-correct="true">-v</button>
+  <button data-correct="false">-c</button>
+  <button data-correct="false">-q</button>
+</div>
+
+<div class="question" id="q27">The command <code>grep -vP '^[ \t]*(#|$)' file.conf</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Show only lines beginning with <code>#</code></button>
+  <button data-correct="true">Hide blank lines and full-line comments</button>
+  <button data-correct="false">Replace tabs with spaces</button>
+  <button data-correct="false">Sort the file contents</button>
+</div>
+
+<div class="question" id="q28">Running <code>ls /usr/bin | grep -P '^[aeiouy](.*[aeiouy])?$'</code> lists programs whose names:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Contain only consonants</button>
+  <button data-correct="false">Start with a vowel but may end with any letter</button>
+  <button data-correct="true">Both start and end with a vowel (one-letter names allowed)</button>
+  <button data-correct="false">End with a number</button>
+</div>
+
+<div class="question" id="q29">What will <code>echo "My name is: `whoami`"</code> print for user “alice”?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">whoami</button>
+  <button data-correct="false">My name is:</button>
+  <button data-correct="true">My name is: alice</button>
+  <button data-correct="false">alice: My name is</button>
+</div>
+
+<div class="question" id="q30">Executing <code>date &gt;/dev/null</code> results in:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Printing the date to the terminal</button>
+  <button data-correct="false">An error because <code>/dev/null</code> is not writable</button>
+  <button data-correct="true">Suppressing the normal output while the command still runs successfully</button>
+  <button data-correct="false">Redirecting errors only</button>
+</div>
+
+
+  <h1> 05 - Users and groups </h1>
+  <!-- Theory questions -->
+<div class="question" id="q1">Which file keeps encrypted user passwords on a typical Linux system?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/passwd</button>
+  <button data-correct="true">/etc/shadow</button>
+  <button data-correct="false">/etc/group</button>
+  <button data-correct="false">/etc/login.defs</button>
+</div>
+
+<div class="question" id="q2">In an <code>/etc/passwd</code> entry, which field contains the user’s primary GID?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">username</button>
+  <button data-correct="false">UID</button>
+  <button data-correct="true">GID</button>
+  <button data-correct="false">shell</button>
+</div>
+
+<div class="question" id="q3">Which account type is typically assigned UID 0?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">System account</button>
+  <button data-correct="false">Regular user</button>
+  <button data-correct="false">Service account</button>
+  <button data-correct="true">root (super-user)</button>
+</div>
+
+<div class="question" id="q4">The file <code>/etc/shells</code> lists:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Valid login shells</button>
+  <button data-correct="false">Disabled user accounts</button>
+  <button data-correct="false">Mounted filesystems</button>
+  <button data-correct="false">PAM modules</button>
+</div>
+
+<div class="question" id="q5">What is the purpose of the “salt” in Unix password hashing?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Encrypts the shadow file</button>
+  <button data-correct="true">Prevents identical hashes for identical passwords</button>
+  <button data-correct="false">Stores password change date</button>
+  <button data-correct="false">Indicates hashing algorithm</button>
+</div>
+
+<div class="question" id="q6">Which group traditionally controls the ability to run <code>su</code> on many Linux distributions?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">audio</button>
+  <button data-correct="false">video</button>
+  <button data-correct="true">wheel</button>
+  <button data-correct="false">users</button>
+</div>
+
+<div class="question" id="q7">The PAM stack is responsible for:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Name lookup for UIDs</button>
+  <button data-correct="false">Filesystem mounting</button>
+  <button data-correct="false">Network routing</button>
+  <button data-correct="true">Authentication and session control</button>
+</div>
+
+<div class="question" id="q8">Which command-line interface queries NSS databases such as passwd and group?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">getent</button>
+  <button data-correct="false">netstat</button>
+  <button data-correct="false">lastlog</button>
+  <button data-correct="false">ldconfig</button>
+</div>
+
+<div class="question" id="q9">If a user has the same UID as another, the system treats them as:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Different for file ownership</button>
+  <button data-correct="true">Indistinguishable</button>
+  <button data-correct="false">Members of wheel group</button>
+  <button data-correct="false">Locked accounts</button>
+</div>
+
+<div class="question" id="q10">The sticky bit on <code>/tmp</code> prevents:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">File execution</button>
+  <button data-correct="false">Reading by others</button>
+  <button data-correct="true">Removing files you do not own</button>
+  <button data-correct="false">Changing file timestamps</button>
+</div>
+
+<div class="question" id="q11">Which special permission makes an executable run with the file owner’s effective UID?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Sticky bit</button>
+  <button data-correct="false">setgid</button>
+  <button data-correct="true">setuid</button>
+  <button data-correct="false">immutable</button>
+</div>
+
+<div class="question" id="q12">A typical default <code>umask</code> of 022 results in new files being created with permissions:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">644</button>
+  <button data-correct="false">600</button>
+  <button data-correct="false">666</button>
+  <button data-correct="false">755</button>
+</div>
+
+<div class="question" id="q13">Which file lists default parameters used by <code>useradd</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/login.defs</button>
+  <button data-correct="true">/etc/default/useradd</button>
+  <button data-correct="false">/etc/nsswitch.conf</button>
+  <button data-correct="false">/etc/profile</button>
+</div>
+
+<div class="question" id="q14">NSS configuration for user lookups is stored in:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/pam.d/system-auth</button>
+  <button data-correct="false">/etc/shadow</button>
+  <button data-correct="true">/etc/nsswitch.conf</button>
+  <button data-correct="false">/etc/securetty</button>
+</div>
+
+<div class="question" id="q15">Which command batch-updates multiple user passwords from standard input?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">passwd</button>
+  <button data-correct="false">pwgen</button>
+  <button data-correct="false">chown</button>
+  <button data-correct="true">chpasswd</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What does <code>id -Gn</code> display?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">All groups the current user belongs to</button>
+  <button data-correct="false">Numeric UID only</button>
+  <button data-correct="false">Effective UID</button>
+  <button data-correct="false">Current SELinux context</button>
+</div>
+
+<div class="question" id="q17">Running <code>getent passwd alice</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Change Alice’s password</button>
+  <button data-correct="true">Print Alice’s passwd entry from NSS sources</button>
+  <button data-correct="false">Lock Alice’s account</button>
+  <button data-correct="false">Show shadow hash directly</button>
+</div>
+
+<div class="question" id="q18">The command <code>chown bob:staff file1</code> changes:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Only the group</button>
+  <button data-correct="false">File permissions to 644</button>
+  <button data-correct="true">Owner to bob and group to staff</button>
+  <button data-correct="false">SELinux context</button>
+</div>
+
+<div class="question" id="q19">Executing <code>su -</code> (with no user argument) attempts to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Start a subshell as current user</button>
+  <button data-correct="false">Switch to wheel group only</button>
+  <button data-correct="false">Lock the terminal</button>
+  <button data-correct="true">Start a login shell as root</button>
+</div>
+
+<div class="question" id="q20">What does <code>find /usr/bin -perm -u=s</code> list?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Executables with setuid bit set</button>
+  <button data-correct="false">Files over 1 MB</button>
+  <button data-correct="false">Broken symbolic links</button>
+  <button data-correct="false">Hidden files only</button>
+</div>
+
+<div class="question" id="q21">After <code>umask 077</code> followed by <code>touch fileX</code>, permissions on <code>fileX</code> will be:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">666</button>
+  <button data-correct="true">600</button>
+  <button data-correct="false">644</button>
+  <button data-correct="false">777</button>
+</div>
+
+<div class="question" id="q22">Command <code>setfacl -m u:carol:rw test.txt</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Remove Carol’s ACL entry</button>
+  <button data-correct="false">Set default ACL only</button>
+  <button data-correct="true">Grant Carol read/write access to test.txt</button>
+  <button data-correct="false">Change file owner to Carol</button>
+</div>
+
+<div class="question" id="q23">Which numeric mode reproduces permissions <code>rwxr-xr-x</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">644</button>
+  <button data-correct="false">600</button>
+  <button data-correct="false">700</button>
+  <button data-correct="true">755</button>
+</div>
+
+<div class="question" id="q24">Running <code>pwgen -sN1</code> outputs:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">One secure random password</button>
+  <button data-correct="false">A salted hash</button>
+  <button data-correct="false">A list of existing users</button>
+  <button data-correct="false">Root’s current password</button>
+</div>
+
+<div class="question" id="q25">The command <code>getfacl file2</code> is used to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Fix ACL inheritance</button>
+  <button data-correct="true">Display Access Control List of file2</button>
+  <button data-correct="false">Reset SELinux context</button>
+  <button data-correct="false">Enable setgid</button>
+</div>
+
+<div class="question" id="q26">What will <code>useradd -m -s /bin/bash alice</code> do?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Create group alice only</button>
+  <button data-correct="false">Change Alice’s shell</button>
+  <button data-correct="true">Create user alice with home directory and Bash shell</button>
+  <button data-correct="false">Lock existing account alice</button>
+</div>
+
+<div class="question" id="q27">Executing <code>chgrp developers file3</code> succeeds only if:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">file3 is executable</button>
+  <button data-correct="false">developers is the file owner</button>
+  <button data-correct="false">setuid is set</button>
+  <button data-correct="true">Caller is the owner and belongs to developers group</button>
+</div>
+
+<div class="question" id="q28">On a directory with sticky bit set, user Bob cannot:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Delete another user’s file within it</button>
+  <button data-correct="false">Create new files</button>
+  <button data-correct="false">Read directory listing</button>
+  <button data-correct="false">Change his own file content</button>
+</div>
+
+<div class="question" id="q29">Which symbolic <code>chmod</code> revokes all permissions from others?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">o+rw</button>
+  <button data-correct="true">o-rwx</button>
+  <button data-correct="false">uo-x</button>
+  <button data-correct="false">g=</button>
+</div>
+
+<div class="question" id="q30">The command <code>find /usr/bin -perm -u=s -perm -g=s</code> outputs executables that have:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Only setgid bit</button>
+  <button data-correct="false">Neither special bit</button>
+  <button data-correct="true">Both setuid and setgid bits set</button>
+  <button data-correct="false">Immutable attribute</button>
+</div>
+
+  <h1> 06 - File Systems  </h1>
+  <div class="question" id="q1">Which i-node field stores the number of hard links to the file?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Owner UID</button>
+  <button data-correct="true">Link count</button>
+  <button data-correct="false">File size</button>
+  <button data-correct="false">Access time</button>
+</div>
+
+<div class="question" id="q2">What file-type letter denotes a symbolic link in <code>ls -l</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">p</button>
+  <button data-correct="false">c</button>
+  <button data-correct="true">l</button>
+  <button data-correct="false">d</button>
+</div>
+
+<div class="question" id="q3">Which directory keeps system-wide configuration files according to the FHS?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/usr</button>
+  <button data-correct="false">/var</button>
+  <button data-correct="false">/opt</button>
+  <button data-correct="true">/etc</button>
+</div>
+
+<div class="question" id="q4">Which command displays all open files and the processes using them?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">lsof</button>
+  <button data-correct="false">lsblk</button>
+  <button data-correct="false">du</button>
+  <button data-correct="false">fsck</button>
+</div>
+
+<div class="question" id="q5">In Linux naming, which device file represents the first SATA/SCSI disk?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/dev/sdb</button>
+  <button data-correct="true">/dev/sda</button>
+  <button data-correct="false">/dev/md0</button>
+  <button data-correct="false">/dev/sr0</button>
+</div>
+
+<div class="question" id="q6">What mount option prevents updating the atime field, improving performance?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">nodev</button>
+  <button data-correct="false">nosuid</button>
+  <button data-correct="true">noatime</button>
+  <button data-correct="false">ro</button>
+</div>
+
+<div class="question" id="q7">Which filesystem is the default general-purpose choice for most modern Linux distributions?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">ext4</button>
+  <button data-correct="false">FAT32</button>
+  <button data-correct="false">NTFS</button>
+  <button data-correct="false">HAMMER2</button>
+</div>
+
+<div class="question" id="q8">In the FHS, which directory is intended for variable data such as logs and mail queues?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/opt</button>
+  <button data-correct="false">/run</button>
+  <button data-correct="false">/bin</button>
+  <button data-correct="true">/var</button>
+</div>
+
+<div class="question" id="q9">What does the command <code>du -sh .</code> display?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Number of i-nodes</button>
+  <button data-correct="true">Directory size summary</button>
+  <button data-correct="false">Open files</button>
+  <button data-correct="false">Mounted filesystems</button>
+</div>
+
+<div class="question" id="q10">Which pseudo-filesystem provides process and kernel information through files under <code>/proc</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">devfs</button>
+  <button data-correct="false">tmpfs</button>
+  <button data-correct="true">procfs</button>
+  <button data-correct="false">sysfs</button>
+</div>
+
+<div class="question" id="q11">Which block-device file typically corresponds to the first partition of the second disk?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/dev/sda1</button>
+  <button data-correct="false">/dev/sda</button>
+  <button data-correct="false">/dev/md1</button>
+  <button data-correct="true">/dev/sdb1</button>
+</div>
+
+<div class="question" id="q12">Which command is used to create a filesystem on a partition?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">mkfs</button>
+  <button data-correct="false">mount</button>
+  <button data-correct="false">fdisk</button>
+  <button data-correct="false">lsblk</button>
+</div>
+
+<div class="question" id="q13">Which timestamp reflects changes to the i-node itself, such as changing file permissions?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">atime</button>
+  <button data-correct="true">ctime</button>
+  <button data-correct="false">mtime</button>
+  <button data-correct="false">birth</button>
+</div>
+
+<div class="question" id="q14">Which directory under <code>/usr</code> contains architecture-independent data like icons and locales?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/usr/bin</button>
+  <button data-correct="false">/usr/lib</button>
+  <button data-correct="true">/usr/share</button>
+  <button data-correct="false">/usr/sbin</button>
+</div>
+
+<div class="question" id="q15">Which command checks and repairs Linux filesystems?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">du</button>
+  <button data-correct="false">chmod</button>
+  <button data-correct="false">cat</button>
+  <button data-correct="true">fsck</button>
+</div>
+
+<!-- Code-example questions -->
+
+<div class="question" id="q16">What does the command <code>ln file1c1 file1c2</code> do?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Creates a hard link named file1c2</button>
+  <button data-correct="false">Creates a symbolic link</button>
+  <button data-correct="false">Copies file contents</button>
+  <button data-correct="false">Moves file1c1</button>
+</div>
+
+<div class="question" id="q17">After running <code>chmod 644 file1d</code>, which timestamp shown by <code>stat file1d</code> changes?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Access time</button>
+  <button data-correct="true">Change time (ctime)</button>
+  <button data-correct="false">Modification time (mtime)</button>
+  <button data-correct="false">Device ID</button>
+</div>
+
+<div class="question" id="q18">Running <code>ls -l /dev | grep -P '^b'</code> lists which type of device files?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Character devices</button>
+  <button data-correct="false">Pseudo-terminals</button>
+  <button data-correct="true">Block devices</button>
+  <button data-correct="false">Sockets</button>
+</div>
+
+<div class="question" id="q19">What is the purpose of <code>dd if=/dev/urandom of=file2c count=1 bs=128</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Create an empty 128 MB file</button>
+  <button data-correct="false">Copy random bytes to clipboard</button>
+  <button data-correct="false">Overwrite entire disk with zeros</button>
+  <button data-correct="true">Create a file with 128 random bytes</button>
+</div>
+
+<div class="question" id="q20">The command <code>lsof | grep $HOME | grep -v cache</code> shows:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Files in your home directory currently open</button>
+  <button data-correct="false">Currently mounted filesystems</button>
+  <button data-correct="false">Open network sockets</button>
+  <button data-correct="false">Disk usage per directory</button>
+</div>
+
+<div class="question" id="q21">Which command summarizes the total size of your home directory in human-readable form?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">df -h</button>
+  <button data-correct="true">du -sh ~</button>
+  <button data-correct="false">ls -lh</button>
+  <button data-correct="false">stat ~</button>
+</div>
+
+<div class="question" id="q22">What does <code>ls -li /usr/bin | awk '$3&gt;1' | sort</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Files larger than 1 MB</button>
+  <button data-correct="false">Symbolic links in /usr/bin</button>
+  <button data-correct="true">Files with more than one hard link</button>
+  <button data-correct="false">Executables owned by root</button>
+</div>
+
+<div class="question" id="q23">The command <code>lsblk</code> is primarily used to:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">List block devices</button>
+  <button data-correct="false">Lock the screen</button>
+  <button data-correct="false">Display memory usage</button>
+  <button data-correct="false">List open sockets</button>
+</div>
+
+<div class="question" id="q24">After creating a swap file with <code>dd</code>, which command marks it as swap space?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">mkfs</button>
+  <button data-correct="false">swapon</button>
+  <button data-correct="false">fdisk</button>
+  <button data-correct="true">mkswap</button>
+</div>
+
+<div class="question" id="q25">The command <code>ls -l /dev | grep sda</code> will primarily display:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Mounted points</button>
+  <button data-correct="true">Device files matching /dev/sda*</button>
+  <button data-correct="false">Network interfaces</button>
+  <button data-correct="false">Cron jobs</button>
+</div>
+
+<div class="question" id="q26">After inserting a USB drive, <code>mount | grep sdb</code> will show:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Filesystem repair status</button>
+  <button data-correct="false">Kernel module list</button>
+  <button data-correct="true">Mounted filesystems related to the USB drive</button>
+  <button data-correct="false">Disk usage</button>
+</div>
+
+<div class="question" id="q27">What does <code>ls /proc | grep -E '^[0-9]*$' | wc -l</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">CPU load percentage</button>
+  <button data-correct="false">Available memory</button>
+  <button data-correct="false">Number of block devices</button>
+  <button data-correct="true">Number of running processes</button>
+</div>
+
+<div class="question" id="q28">The command <code>find /lib/modules/$(uname -r)/kernel/ -name "*.ko.zst"</code> lists:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Compressed kernel modules for the current kernel</button>
+  <button data-correct="false">User binaries</button>
+  <button data-correct="false">Open files</button>
+  <button data-correct="false">Hard links</button>
+</div>
+
+<div class="question" id="q29">Which command displays filesystem-independent and filesystem-specific mount options?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">cat /etc/fstab</button>
+  <button data-correct="true">man mount</button>
+  <button data-correct="false">df -T</button>
+  <button data-correct="false">ls -l /mnt</button>
+</div>
+
+<div class="question" id="q30">Using <code>cat /etc/fstab</code>, you can determine:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Current CPU usage</button>
+  <button data-correct="false">Active network connections</button>
+  <button data-correct="true">Filesystems configured to mount at boot</button>
+  <button data-correct="false">Process list</button>
+</div>
 
 
 
@@ -447,6 +1971,8 @@
 <!-- Q26 -->
 <div class="question" id="q26">How can you check a file’s owner, group and permissions?</div>
 
+<button id="scrollTopBtn" title="Go to top">↑ Top</button>
+
   </div>
 
   <script>
@@ -469,6 +1995,43 @@
       }
     });
   });
+</script>
+
+<script>
+  const tocList = document.getElementById('toc-list');
+  const headers = document.querySelectorAll('h1, h3, h4, h5, h6');
+
+  headers.forEach((header, index) => {
+    const id = header.id || 'header-' + index;
+    header.id = id;
+
+    const link = document.createElement('a');
+    link.href = `#${id}`;
+    link.textContent = header.textContent;
+
+    const listItem = document.createElement('li');
+    listItem.appendChild(link);
+    tocList.appendChild(listItem);
+  });
+</script>
+<script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Optional: hide/show button based on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  });
+
+  // Hide initially
+  scrollBtn.style.display = "none";
 </script>
 
 </body>
