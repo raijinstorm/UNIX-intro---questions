@@ -1949,6 +1949,495 @@
   <button data-correct="false">Process list</button>
 </div>
 
+<h1> 07 - Processes  </h1>
+```html
+<!-- Theory questions -->
+<div class="question" id="q1">Which return value does <code>fork()</code> deliver <em>in the parent</em> when it succeeds?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">0</button>
+  <button data-correct="true">The PID of the newly-created child</button>
+  <button data-correct="false">-1</button>
+  <button data-correct="false">Its own PPID</button>
+</div>
+
+<div class="question" id="q2">After a successful call to <code>exec()</code>, which of these attributes of the process <em>definitely remains unchanged</em>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Program code</button>
+  <button data-correct="false">Open text segment</button>
+  <button data-correct="true">Process ID (PID)</button>
+  <button data-correct="false">Contents of the instruction segment</button>
+</div>
+
+<div class="question" id="q3">What is the PID of <code>init</code> (or <code>systemd</code>) on every Unix-like system?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">1</button>
+  <button data-correct="false">0</button>
+  <button data-correct="false">-1</button>
+  <button data-correct="false">It varies every boot</button>
+</div>
+
+<div class="question" id="q4">A process that has terminated but whose exit status has not yet been collected by its parent is called a&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">daemon</button>
+  <button data-correct="false">orphan</button>
+  <button data-correct="false">sleeping process</button>
+  <button data-correct="true">zombie</button>
+</div>
+
+<div class="question" id="q5">Processes launched by a single pipeline (e.g.&nbsp;<code>cmd1 | cmd2</code>) share the same&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">session ID</button>
+  <button data-correct="true">process-group ID</button>
+  <button data-correct="false">different controlling terminals</button>
+  <button data-correct="false">necessarily identical PIDs</button>
+</div>
+
+<div class="question" id="q6">Within a session, the process that first opens a terminal becomes the&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="true">controlling process (session leader)</button>
+  <button data-correct="false">init process</button>
+  <button data-correct="false">foreground job</button>
+  <button data-correct="false">zombie</button>
+</div>
+
+<div class="question" id="q7">Which signal is sent automatically to a parent when one of its children terminates?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGTERM</button>
+  <button data-correct="false">SIGSTOP</button>
+  <button data-correct="true">SIGCHLD</button>
+  <button data-correct="false">SIGUSR1</button>
+</div>
+
+<div class="question" id="q8">Which two signals <em>cannot</em> be caught, blocked or ignored by a process?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGINT and SIGQUIT</button>
+  <button data-correct="true">SIGKILL and SIGSTOP</button>
+  <button data-correct="false">SIGTERM and SIGUSR2</button>
+  <button data-correct="false">SIGFPE and SIGSEGV</button>
+</div>
+
+<div class="question" id="q9">The command that draws a hierarchical view of running processes is&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">pgrep</button>
+  <button data-correct="false">top</button>
+  <button data-correct="false">ps</button>
+  <button data-correct="true">pstree</button>
+</div>
+
+<div class="question" id="q10">If a programme is installed set-uid root, which IDs change when an ordinary user executes it?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Effective UID only</button>
+  <button data-correct="false">Real UID only</button>
+  <button data-correct="false">Both real and effective UIDs</button>
+  <button data-correct="false">Neither UID</button>
+</div>
+
+<div class="question" id="q11">Inside <code>/proc/&lt;PID&gt;/</code>, which file lists the command-line arguments that started the process?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">status</button>
+  <button data-correct="false">exe</button>
+  <button data-correct="true">cmdline</button>
+  <button data-correct="false">environ</button>
+</div>
+
+<div class="question" id="q12">Pressing <kbd>Ctrl-Z</kbd> in a terminal normally sends which signal to the foreground process group?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGQUIT</button>
+  <button data-correct="true">SIGTSTP (often seen as SIGSTOP behaviour)</button>
+  <button data-correct="false">SIGINT</button>
+  <button data-correct="false">SIGHUP</button>
+</div>
+
+<div class="question" id="q13">Which signal’s default action is to terminate a process <em>and</em> create a core-dump file?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGTERM</button>
+  <button data-correct="false">SIGINT</button>
+  <button data-correct="false">SIGUSR1</button>
+  <button data-correct="true">SIGQUIT</button>
+</div>
+
+<div class="question" id="q14">The POSIX real-time signal numbers start at the symbolic name&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="true">SIGRTMIN</button>
+  <button data-correct="false">SIGUSR3</button>
+  <button data-correct="false">SIGMAX</button>
+  <button data-correct="false">SIGINFO</button>
+</div>
+
+<div class="question" id="q15">Which utility combines <code>ps</code> and <code>grep</code> to output PIDs that match a given pattern?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">pkill</button>
+  <button data-correct="true">pgrep</button>
+  <button data-correct="false">pidof</button>
+  <button data-correct="false">lsof</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What does <code>kill -9 $$</code> do when typed in a shell?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Immediately terminates the running shell with SIGKILL</button>
+  <button data-correct="false">Stops the shell but leaves it resumable</button>
+  <button data-correct="false">Sends SIGKILL to every background job only</button>
+  <button data-correct="false">Nothing, because PID 0 is reserved</button>
+</div>
+
+<div class="question" id="q17">Running <code>ps -o ppid= -p $$</code> prints:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The current shell’s PID</button>
+  <button data-correct="true">The PID of the shell’s parent process</button>
+  <button data-correct="false">The PPID of <code>ps</code> itself</button>
+  <button data-correct="false">All ancestor PIDs up the tree</button>
+</div>
+
+<div class="question" id="q18">Which command shows only the processes owned by user <em>alice</em> consuming the most CPU, updating every 2 seconds?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">top -u alice</button>
+  <button data-correct="false">htop -d 2 -u alice</button>
+  <button data-correct="true">top -o %CPU -d 2 -u alice</button>
+  <button data-correct="false">ps aux | sort -nr -k3</button>
+</div>
+
+<div class="question" id="q19">Given a running process with PID 4242, what does <code>strace -p 4242 -e openat</code> output?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A core dump of process 4242</button>
+  <button data-correct="false">All system calls except file-opens</button>
+  <button data-correct="false">Nothing until the process exits</button>
+  <button data-correct="true">Only the <code>openat()</code> calls made by process 4242</button>
+</div>
+
+<div class="question" id="q20">What is accomplished by <code>nohup longtask &amp;</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Runs <code>longtask</code> immune to SIGHUP and in the background</button>
+  <button data-correct="false">Starts <code>longtask</code> in foreground but disallows Ctrl-C</button>
+  <button data-correct="false">Sends SIGHUP to <code>longtask</code></button>
+  <button data-correct="false">Stops <code>longtask</code> until resumed</button>
+</div>
+
+<div class="question" id="q21">After suspending <code>nano</code> with <kbd>Ctrl-Z</kbd>, which command places it back into the foreground?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">bg %1</button>
+  <button data-correct="true">fg %1</button>
+  <button data-correct="false">jobs -f 1</button>
+  <button data-correct="false">kill -CONT %1</button>
+</div>
+
+<div class="question" id="q22">What effect does <code>pkill -SIGUSR1 -f backup.sh</code> have?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Terminates <code>backup.sh</code> scripts with SIGKILL</button>
+  <button data-correct="false">Kills every user session named backup</button>
+  <button data-correct="true">Sends SIGUSR1 to all processes whose full command line matches <code>backup.sh</code></button>
+  <button data-correct="false">Starts a new <code>backup.sh</code> in the background</button>
+</div>
+
+<div class="question" id="q23">The shell substitution <code>kill $(pgrep sshd)</code> succeeds only if:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">No instance of sshd is running</button>
+  <button data-correct="false">Exactly one sshd PID exists</button>
+  <button data-correct="true">The user has permission to signal every listed PID</button>
+  <button data-correct="false"><code>pgrep</code> exits with status 1</button>
+</div>
+
+<div class="question" id="q24">Why might one run <code>dmesg -T | tail -n 20</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">To view the 20 most recent kernel messages with human-readable timestamps</button>
+  <button data-correct="false">To clear the kernel message buffer</button>
+  <button data-correct="false">To watch live network traffic</button>
+  <button data-correct="false">To display only USB-related entries</button>
+</div>
+
+<div class="question" id="q25">Which one-liner prints the number of running zombies owned by <em>any</em> user?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">ps aux | grep zombie | wc -l</button>
+  <button data-correct="true">ps -eo stat | grep -c '^Z'</button>
+  <button data-correct="false">top -b -n1 | grep Z | wc -l</button>
+  <button data-correct="false">pgrep -x zombie | wc -l</button>
+</div>
+
+<div class="question" id="q26">What does <code>sleep 600 &amp; echo $!</code> print immediately?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">600</button>
+  <button data-correct="false">0</button>
+  <button data-correct="true">The PID of the background <code>sleep</code> process</button>
+  <button data-correct="false">The exit status of <code>sleep</code></button>
+</div>
+
+<div class="question" id="q27">Which signal resumes a stopped job when sent with <code>kill -CONT %2</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SIGSTOP</button>
+  <button data-correct="false">SIGTSTP</button>
+  <button data-correct="false">SIGKILL</button>
+  <button data-correct="true">SIGCONT</button>
+</div>
+
+<div class="question" id="q28">Running <code>pstree -p $(pgrep -n bash)</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Show a tree of the newest Bash process with PIDs displayed</button>
+  <button data-correct="false">Kill the newest Bash session</button>
+  <button data-correct="false">List only parent PIDs of Bash</button>
+  <button data-correct="false">Start a new Bash inside <code>pstree</code></button>
+</div>
+
+<div class="question" id="q29">What is the practical difference between <code>killall sshd</code> and <code>pkill sshd</code> on most Linux systems?</div>
+<div class="choices" id="choices">
+  <button data-correct="false"><code>killall</code> matches substrings; <code>pkill</code> requires exact names</button>
+  <button data-correct="true"><code>killall</code> matches command names only; <code>pkill</code> can match full regex patterns</button>
+  <button data-correct="false">They are identical aliases</button>
+  <button data-correct="false"><code>pkill</code> cannot send signals other than SIGTERM</button>
+</div>
+
+<div class="question" id="q30">To trace all file-descriptor operations of <code>myapp</code> and write the log to <code>trace.log</code>, you would run:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">strace -ff -o trace.log -e trace=file myapp</button>
+  <button data-correct="true">strace -ff -o trace.log -e trace=desc myapp</button>
+  <button data-correct="false">ltrace -o trace.log myapp</button>
+  <button data-correct="false">strace -p myapp -o trace.log</button>
+</div>
+
+
+<h1> 08 - System  </h1>
+<!-- Theory questions -->
+<div class="question" id="q1">Which single-letter suffix is conventionally used to name a Unix daemon program (e.g., <code>sshd</code>)?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">t</button>
+  <button data-correct="false">x</button>
+  <button data-correct="false">s</button>
+  <button data-correct="true">d</button>
+</div>
+
+<div class="question" id="q2">In classic SysV init, run-level&nbsp;0 is designated for:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">System shutdown</button>
+  <button data-correct="false">Single-user maintenance</button>
+  <button data-correct="false">Multi-user with networking</button>
+  <button data-correct="false">System reboot</button>
+</div>
+
+<div class="question" id="q3">On most Linux systems using SysV-style scripts, daemon control scripts reside in which directory?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/usr/lib/systemd/</button>
+  <button data-correct="true">/etc/init.d/</button>
+  <button data-correct="false">/etc/rc.conf</button>
+  <button data-correct="false">/var/run/</button>
+</div>
+
+<div class="question" id="q4">In FreeBSD and other BSDs, the primary file that enables or disables system services at boot is:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">/etc/rc.conf</button>
+  <button data-correct="false">/etc/inittab</button>
+  <button data-correct="false">/etc/services</button>
+  <button data-correct="false">/etc/crontab</button>
+</div>
+
+<div class="question" id="q5">Under systemd, a group of related units collected together is called a&nbsp;…</div>
+<div class="choices" id="choices">
+  <button data-correct="false">service</button>
+  <button data-correct="true">target</button>
+  <button data-correct="false">socket</button>
+  <button data-correct="false">slice</button>
+</div>
+
+<div class="question" id="q6">The Unix daemon that periodically executes commands specified in crontab files is:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">syslogd</button>
+  <button data-correct="false">inetd</button>
+  <button data-correct="true">cron</button>
+  <button data-correct="false">dbus-daemon</button>
+</div>
+
+<div class="question" id="q7">Which directory conventionally stores system log files generated by syslog or syslog-ng?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/logs</button>
+  <button data-correct="true">/var/log</button>
+  <button data-correct="false">/usr/log</button>
+  <button data-correct="false">/opt/log</button>
+</div>
+
+<div class="question" id="q8">OpenRC, the init system used by Gentoo, manages services by symbolic links in sub-directories of:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">/etc/rc.d/</button>
+  <button data-correct="true">/etc/runlevels/</button>
+  <button data-correct="false">/etc/systemd/</button>
+  <button data-correct="false">/etc/conf.d/</button>
+</div>
+
+<div class="question" id="q9">Which run-level is traditionally used for single-user (maintenance) mode on SysV systems?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">0</button>
+  <button data-correct="false">3</button>
+  <button data-correct="true">1&nbsp;(or&nbsp;S)</button>
+  <button data-correct="false">6</button>
+</div>
+
+<div class="question" id="q10">The presence of a file such as <code>/var/run/sshd.pid</code> typically indicates:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A pending system update</button>
+  <button data-correct="false">The daemon is disabled</button>
+  <button data-correct="true">The PID of a running sshd instance</button>
+  <button data-correct="false">Kernel panic information</button>
+</div>
+
+<div class="question" id="q11">In a <code>/etc/rc3.d/</code> directory, a script link whose name begins with <strong>K</strong> is executed with which action when entering that run-level?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">stop</button>
+  <button data-correct="false">start</button>
+  <button data-correct="false">reload</button>
+  <button data-correct="false">status</button>
+</div>
+
+<div class="question" id="q12">Which modern Linux init system loads services on-demand using socket activation and parallel start-up?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">SysVinit</button>
+  <button data-correct="false">BSD rc</button>
+  <button data-correct="true">systemd</button>
+  <button data-correct="false">runit</button>
+</div>
+
+<div class="question" id="q13">In syslog terminology, the severity of a message (e.g., <em>err</em>, <em>warning</em>) is called its …</div>
+<div class="choices" id="choices">
+  <button data-correct="false">facility</button>
+  <button data-correct="true">level</button>
+  <button data-correct="false">source</button>
+  <button data-correct="false">tag</button>
+</div>
+
+<div class="question" id="q14">Which command is typically used to rotate and compress old log files on Unix systems?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">logwatch</button>
+  <button data-correct="true">logrotate</button>
+  <button data-correct="false">journalctl</button>
+  <button data-correct="false">sysctl</button>
+</div>
+
+<div class="question" id="q15">In syslog-ng configuration, the stanza that ties together a source, optional filters, and a destination is declared with the keyword:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">source</button>
+  <button data-correct="false">filter</button>
+  <button data-correct="true">log</button>
+  <button data-correct="false">destination</button>
+</div>
+
+<!-- Code-example questions -->
+<div class="question" id="q16">What does the command <code>systemctl restart sshd</code> do on a systemd host?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Reloads <code>sshd</code> configuration without disconnecting clients</button>
+  <button data-correct="true">Stops and then starts the SSH daemon</button>
+  <button data-correct="false">Enables <code>sshd</code> to start at boot</button>
+  <button data-correct="false">Shows the status of <code>sshd</code></button>
+</div>
+
+<div class="question" id="q17">Running <code>init 6</code> as root on a SysV system will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Halt the machine immediately</button>
+  <button data-correct="false">Enter single-user mode</button>
+  <button data-correct="true">Reboot the system</button>
+  <button data-correct="false">Do nothing unless in run-level 6 already</button>
+</div>
+
+<div class="question" id="q18">Given the crontab line <code>0 22 * * 1-5 root /root/backup</code>, when is <code>/root/backup</code> executed?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Every hour on weekdays</button>
+  <button data-correct="false">At 22:00 on weekends only</button>
+  <button data-correct="true">At 22:00 Monday through Friday</button>
+  <button data-correct="false">Daily at 10 AM</button>
+</div>
+
+<div class="question" id="q19">What is defined by the syslog-ng line <code>destination d_mail { file("/var/log/mail.log"); };</code> ?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">A filter that selects mail messages</button>
+  <button data-correct="false">A source listening on TCP port 25</button>
+  <button data-correct="true">A destination file for mail-related logs</button>
+  <button data-correct="false">An action to rotate mail logs weekly</button>
+</div>
+
+<div class="question" id="q20">What will <code>lsmod | head</code> display?</div>
+<div class="choices" id="choices">
+  <button data-correct="true">The first few currently loaded kernel modules</button>
+  <button data-correct="false">Available modules in /lib/modules</button>
+  <button data-correct="false">Modules compiled into the kernel</button>
+  <button data-correct="false">Nothing unless run as root</button>
+</div>
+
+<div class="question" id="q21">The command <code>modprobe -r lp</code> attempts to:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Remove the <code>lp</code> kernel module</button>
+  <button data-correct="false">Load the <code>lp</code> module with default options</button>
+  <button data-correct="false">Reload the <code>lp</code> module configuration</button>
+  <button data-correct="false">List information about <code>lp</code></button>
+</div>
+
+<div class="question" id="q22">On Gentoo, the command <code>rc-update add sshd default</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Immediately start <code>sshd</code> once</button>
+  <button data-correct="false">Disable <code>sshd</code> in all runlevels</button>
+  <button data-correct="true">Enable <code>sshd</code> in the <em>default</em> run-level</button>
+  <button data-correct="false">Show status of <code>sshd</code></button>
+</div>
+
+<div class="question" id="q23">Executing <code>systemctl enable chronyd</code> will cause <code>chronyd</code> to:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Stop immediately</button>
+  <button data-correct="true">Start automatically at boot</button>
+  <button data-correct="false">Display its current status</button>
+  <button data-correct="false">Restart with new configuration</button>
+</div>
+
+<div class="question" id="q24">What does <code>crontab -e</code> do for an unprivileged user?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Edits the system-wide crontab</button>
+  <button data-correct="true">Opens the user’s personal crontab for editing</button>
+  <button data-correct="false">Lists all cron jobs</button>
+  <button data-correct="false">Disables cron for that user</button>
+</div>
+
+<div class="question" id="q25">The command <code>logger -p auth.notice "User login"</code> will:</div>
+<div class="choices" id="choices">
+  <button data-correct="true">Send “User login” to syslog with facility <em>auth</em> at level <em>notice</em></button>
+  <button data-correct="false">Append the message to /var/log/auth.log only</button>
+  <button data-correct="false">Write directly to <code>/dev/tty12</code></button>
+  <button data-correct="false">Create a new syslog facility named <em>auth</em></button>
+</div>
+
+<div class="question" id="q26">What information does <code>dmesg | grep USB</code> typically reveal?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Contents of <code>/var/log/messages</code></button>
+  <button data-correct="true">Kernel messages related to USB devices</button>
+  <button data-correct="false">The user’s sudo history</button>
+  <button data-correct="false">Current USB bandwidth usage</button>
+</div>
+
+<div class="question" id="q27">If <code>/etc/rc3.d</code> contains 25 entries whose names begin with <strong>S</strong>, the command <code>find /etc/rc3.d -name "S*" | wc -l</code> will print:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">0</button>
+  <button data-correct="true">25</button>
+  <button data-correct="false">50</button>
+  <button data-correct="false">The names of the scripts</button>
+</div>
+
+<div class="question" id="q28">What is the effect of <code>systemctl status nginx</code>?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">Starts nginx immediately</button>
+  <button data-correct="false">Enables nginx at boot</button>
+  <button data-correct="true">Displays detailed information about the nginx service</button>
+  <button data-correct="false">Removes nginx unit files</button>
+</div>
+
+<div class="question" id="q29">Executing <code>rmmod dummy</code> without errors implies that:</div>
+<div class="choices" id="choices">
+  <button data-correct="false">The module <code>dummy</code> is now loaded</button>
+  <button data-correct="true">The <code>dummy</code> kernel module has been unloaded</button>
+  <button data-correct="false">The command failed due to dependencies</button>
+  <button data-correct="false">All kernel modules were reloaded</button>
+</div>
+
+<div class="question" id="q30">In syslog-ng, which of these lines forwards <em>all</em> messages to a remote host at 192.0.2.5 on port 514/TCP?</div>
+<div class="choices" id="choices">
+  <button data-correct="false">destination d_net { udp("192.0.2.5" port(514)); };</button>
+  <button data-correct="true">destination d_net { tcp("192.0.2.5" port(514)); };</button>
+  <button data-correct="false">filter f_net { host("192.0.2.5"); };</button>
+  <button data-correct="false">source s_net { network(514); };</button>
+</div>
+
+
 
 
 <h1> Open-ended questions  </h1>
